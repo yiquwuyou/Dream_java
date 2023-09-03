@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.MessageMapper">
+
+<!--    order by postTime desc 根据时间，进行排序，让最新的记录在上面-->
+<!--    limit 1 此处只需要查一条消息（放到会话列表中，预览效果 ）-->
+    <select id="getLastMessageBySessionId" resultType="java.lang.String">
+        select content from message where sessionId = #{sessionId} order by postTime desc limit 1
+    </select>
+
+    <select id="getMessagesBySessionId" resultType="com.example.demo.model.Message">
+        select messageId, fromId, username as fromName, sessionId, content
+        from user, message
+        where user.userId = message.fromId and message.sessionId = #{sessionId}
+        order by postTime desc limit 100
+    </select>
+
+    <insert id="add">
+        insert into message values(null, #{fromId}, #{sessionId}, #{content}, now())
+    </insert>
+</mapper>

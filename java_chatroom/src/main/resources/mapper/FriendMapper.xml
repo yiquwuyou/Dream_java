@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.FriendMapper">
+
+    <!--    resultType 是返回值类型所在的路径，不是mapper所在的路径！ 此处 selectByName 的返回值类型是User -->
+    <select id="selectFriendList" resultType="com.example.demo.model.Friend">
+<!--        用到了子查询-->
+        select userId as friendId, username as friendName from user
+        where userId in
+        (select friendId from friend where userId = #{userId})
+    </select>
+
+</mapper>
