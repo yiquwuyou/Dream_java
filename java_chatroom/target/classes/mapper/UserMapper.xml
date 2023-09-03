@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.UserMapper">
+
+<!--    useGeneratedKeys="true" 意思是插入的同时要获取插入结果的自增主键-->
+<!--    keyProperty="userId" 表示获取到自增主键后，将其赋值为 userId 这个属性-->
+    <insert id="insert" useGeneratedKeys="true" keyProperty="userId">
+        insert into user values(null, #{username}, #{password})
+    </insert>
+
+<!--    resultType 是返回值类型所在的路径，不是mapper所在的路径！ 此处 selectByName 的返回值类型是User -->
+    <select id="selectByName" resultType="com.example.demo.model.User">
+        select * from user where username = #{username}
+    </select>
+</mapper>

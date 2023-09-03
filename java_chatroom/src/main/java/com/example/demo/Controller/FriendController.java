@@ -26,7 +26,6 @@ public class FriendController {
         HttpSession session = request.getSession(false);
         if (session == null) {
             // 当前用户会话不存在
-            // yiquwuyou 专属
             // 直接返回一个空的列表即可
             System.out.println("[getFriendList] session 不存在");
             return new ArrayList<Friend>();
