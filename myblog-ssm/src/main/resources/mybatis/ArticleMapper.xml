@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.demo.mapper.ArticleMapper">
+    <!--    上面这一行表示mapper（与数据库对应的数据持久层的接口）的地址，可能需要更改，注意观察路径是否有错误-->
+<!--    这里的 SQL 语句不用写； 因为它使用时会自动加上分号-->
+
+    <insert id="add">
+        insert into articleinfo(title,content,uid)
+        values(#{title},#{content},#{uid})
+    </insert>
+
+    <select id="getDetailByIdAndUid" resultType="com.example.demo.entity.ArticleInfo">
+        select * from articleinfo where id=#{id} and uid=#{uid}
+    </select>
+
+<!--    在修改的查询操作中同时进行了权限校验 —— 亮点 -->
+    <update id="update">
+        update articleinfo set title=#{title},content=#{content},updatetime=#{updatetime}
+        where id=#{id} and uid=#{uid}
+    </update>
+
+<!--    此处需要连表查询，且用的是 ArticleInfoVo 这个对象，因为文章表没有用户名（username）-->
+    <select id="getDetail" resultType="com.example.demo.entity.vo.ArticleInfoVO">
+        select a.*,u.username from articleinfo a
+        left join userinfo u on u.id=a.uid
+        where a.id=#{id}
+    </select>
+
+<!--    增加阅读量-->
+    <update id="addRCount">
+        update articleinfo set rcount=rcount+1 where id=#{id}
+    </update>
+
+<!--    实际工作写代码时，不要写 * 需要啥字段就查啥字段  因为实际工作中，数据库的表的字段非常的多-->
+    <select id="getListByUid" resultType="com.example.demo.entity.ArticleInfo">
+        select id,title,createtime,content from articleinfo
+        where uid=#{uid}
+        order by id desc
+<!--        倒序查询，新文章在前-->
+    </select>
+
+    <delete id="del">
+        delete from articleinfo where id=#{id} and uid=#{uid}
+    </delete>
+
+    <select id="getListByPage" resultType="com.example.demo.entity.ArticleInfo">
+        select id, title, createtime, content from articleinfo
+        order by id desc
+        limit #{pageSize} offset #{offset}
+    </select>
+
+    <select id="getCount" resultType="java.lang.Integer">
+        select count(id) from articleinfo
+    </select>
+</mapper>
