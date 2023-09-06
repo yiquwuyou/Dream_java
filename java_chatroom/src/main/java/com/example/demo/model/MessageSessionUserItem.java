@@ -20,4 +20,5 @@ public class MessageSessionUserItem {
     public void setUserId(int userId) {
         this.userId = userId;
     }
+
 }
