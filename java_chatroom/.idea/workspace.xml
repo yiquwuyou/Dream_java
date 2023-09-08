@@ -5,12 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="f61434b4-8e40-459e-9c29-59fcba96f335" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/controller/TestController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/entity/R.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/config/WebAppConfigurer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/controller/ProductController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/entity/CustomDateTimeSerializer.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/entity/Product.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/mapper/ProductMapper.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/service/impl/IProductService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/service/impl/IProductServicelmpl.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java1234-mail-v3/src/main/resources/mybatis/mapper/ProductMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/Java1234MailV3Application.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/Java1234MailV3Application.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/entity/R.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java1234-mail-v3/src/main/java/com/example/java1234mailv3/entity/R.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/MessageSessionUserItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/MessageSessionUserItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/FriendController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/FriendController.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,12 +69,12 @@
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/code_github/Dream_java/java1234-mail-v3",
+    "last_opened_file_path": "D:/code_github/Dream_java/java_chatroom",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
-    "settings.editor.selected.configurable": "reference.projectsettings.compiler.javacompiler",
+    "settings.editor.selected.configurable": "MavenSettings",
     "spring.configuration.checksum": "1b1545388864b89f22e1d447eb70778c",
     "vue.rearranger.settings.migration": "true"
   }
@@ -133,6 +138,8 @@
       <workItem from="1693963299845" duration="1833000" />
       <workItem from="1693976935151" duration="15000" />
       <workItem from="1694003882688" duration="165000" />
+      <workItem from="1694046334064" duration="1200000" />
+      <workItem from="1694080580360" duration="1045000" />
     </task>
     <servers />
   </component>
