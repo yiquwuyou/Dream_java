@@ -1,0 +1,16 @@
+org\example\util\Util.class
+org\example\model\Channel.class
+org\example\model\MessageCenter.class
+org\example\servlet\LogoutServlet.class
+org\example\model\User.class
+org\example\dao\ChannelDAO.class
+org\example\servlet\RegisterServlet.class
+org\example\model\Response.class
+org\example\model\Message.class
+org\example\test\TestWebSocket.class
+org\example\dao\UserDAO.class
+org\example\servlet\ChannelServlet.class
+org\example\exception\AppException.class
+org\example\servlet\MessageWebsocket.class
+org\example\servlet\LoginServlet.class
+org\example\dao\MessageDAO.class

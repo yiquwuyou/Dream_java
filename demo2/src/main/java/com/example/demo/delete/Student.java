@@ -39,4 +39,12 @@ public class Student {
         this.id = id;
         this.name = name;
     }
+
+
+}
+
+class Print_1{
+    public void print_2(){
+        System.out.println("这是类中定义了一个类");
+    }
 }
