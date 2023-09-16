@@ -1,0 +1,17 @@
+.box{
+  width: 200px;
+  height: 200px;
+  background: orange;
+}
+.boxhover{
+  background: palegreen;
+}
+
+.box .inner{
+  width: 80px;
+  height: 80px;
+  background: pink;
+}
+.box .innerhover{
+  background: red;
+}

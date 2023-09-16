@@ -1,0 +1,9 @@
+<view 
+class="box"
+hover-class="boxhover"
+>
+  华强卖瓜
+  <view class="inner" hover-class="innerhover" hover-stop-propagation>
+    砌墙卖鱼
+  </view>
+</view>
