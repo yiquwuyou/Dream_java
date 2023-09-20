@@ -1,0 +1,36 @@
+server:
+  port: 9281
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/hospital_manager?characterEncoding=utf8&useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+
+mybatis-plus:
+  mapper-locations: classpath*:mybatis/*.xml
+  configuration:
+    map-underscore-to-camel-case: true
+
+
+#    这是一个 Spring Boot 项目的配置文件，其中包含了一些关键配置信息。让我为您解释一下这些配置项的含义：
+#
+#    server.port: 9281：配置应用程序的端口号为 9281。这意味着应用程序将在 9281 端口上运行。
+#
+#    数据库配置 (spring.datasource)：
+#
+#    spring.datasource.driver-class-name：指定数据库驱动程序的类名，这里是 MySQL 数据库的驱动程序。
+#    spring.datasource.url：指定数据库的连接 URL。在这里，连接的是名为 hospital_manager 的 MySQL 数据库，使用了一些参数，包括字符编码、时区等配置。
+#    spring.datasource.username：指定连接数据库的用户名，这里是 "root"。
+#    spring.datasource.password：指定连接数据库的密码，这里是 "123456"。
+#    MyBatis Plus 配置 (mybatis-plus)：
+#
+#    mybatis-plus.mapper-locations：指定 MyBatis Mapper XML 文件的位置。
+#  classpath*:mybatis/*.xml 表示 MyBatis Mapper XML 文件位于类路径下的 mybatis 目录中，且可以匹配该目录下的所有 XML 文件。
+#    mybatis-plus.configuration.map-underscore-to-camel-case：配置是否开启驼峰命名规则（Camel Case）映射，设置为 true 表示启用。启
+#  用后，数据库字段名使用下划线分隔的情况下，Java 实体类的属性名会采用驼峰命名规则，例如数据库字段 user_name 会映射到 Java 实体类的属性 userName。
+#    这个配置文件主要用于配置应用程序的端口和数据库连接信息，以及 MyBatis Plus 的一些配置，以便正确连接到数据库并执行数据库操作。您可以根据需要修改这些配置项，以适应您的项目需求
+
+
+

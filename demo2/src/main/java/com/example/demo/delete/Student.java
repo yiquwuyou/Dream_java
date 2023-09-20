@@ -3,6 +3,7 @@ package com.example.demo.delete;
 public class Student {
     private int id;
     private String name;
+    public static int n_id;
 
     public int getId() {
         return id;
@@ -30,10 +31,12 @@ public class Student {
 
     public Student() {
         System.out.println("啥也没传！");
+        n_id++;
     }
     public Student(int id,String name) {
         this.id = id;
         this.name = name;
+        n_id++;
     }
     public void upDate(int id, String name){
         this.id = id;
