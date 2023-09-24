@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rabbiter.hospital.mapper.PatientMapper">
+    <select id="patientAge" resultType="Integer">
+        select count(p_id) as agePeople from patient  where
+            p_age BETWEEN #{startAge} AND #{endAge}
+    </select>
+
+
+</mapper>
+<!--        这是一个MyBatis的Mapper文件，用于定义与数据库表patient相关的SQL映射。其中包括了一个查询语句，用于获取指定年龄范围内患者的数量。-->
+
+<!--        以下是这个Mapper文件中定义的SQL语句的详细解释：-->
+
+<!--        patientAge - 查询指定年龄范围内患者的数量。-->
+<!--        id: patientAge-->
+<!--        resultType: Integer，表示结果类型为整数。-->
+<!--        SQL查询语句:-->
+<!--        select count(p_id) as agePeople from patient where p_age BETWEEN #{startAge} AND #{endAge}-->
+<!--        这个语句会计算在p_age字段（患者年龄）在指定的startAge和endAge之间的患者数量，并将结果作为agePeople返回。-->

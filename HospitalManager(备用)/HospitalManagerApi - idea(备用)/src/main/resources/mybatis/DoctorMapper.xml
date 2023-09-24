@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rabbiter.hospital.mapper.DoctorMapper">
+<!--    根据科室查询医生信息-->
+    <select id="findDoctorBySection" resultType="com.rabbiter.hospital.pojo.Doctor" parameterType="String">
+        select d_id,d_name,d_gender,d_post,d_section,d_introduction,d_price,d_avg_star from doctor where d_section=#{d_section} and d_state=1
+    </select>
+<!--    更新医生的评分信息，评分人数，评分分数等-->
+    <update id="updateStar">
+        update doctor set d_people = d_people+1,d_star = d_star+#{dStar},d_avg_star=d_star/d_people where d_id = #{dId}
+    </update>
+
+
+</mapper>
+<!--        是一个 MyBatis 的 Mapper XML 配置文件示例，用于操作名为 DoctorMapper 的映射器接口。-->
+
+<!--        以下是该文件的主要内容：-->
+
+<!--        XML 文件的声明和 DTD 引用。-->
+
+<!--        mapper 元素的 namespace 属性指定了对应的映射器接口的全限定名。-->
+
+<!--        select 元素定义了一个名为 findDoctorBySection 的查询语句，使用了参数 d_section。通过 resultType 属性指定查询返回结果的类型为 com.rabbiter.hospital.pojo.Doctor。通过 parameterType 属性指定传入参数的类型为 String。-->
+
+<!--        update 元素定义了一个名为 updateStar 的更新语句，使用了参数 dStar 和 dId。通过 id 属性指定该语句的唯一标识。-->
+
+<!--        这两个语句的目的是：-->
+
+<!--        findDoctorBySection 查询语句是根据指定的科室 d_section 和医生状态 d_state 查询医生的信息。查询结果将会映射到 com.rabbiter.hospital.pojo.Doctor 类型的对象中。-->
+
+<!--        updateStar 更新语句是根据医生的唯一标识 dId，通过累加 dStar 的值，更新医生表中的 d_people、d_star 和 d_avg_star 字段的值。-->
+
+<!--        该示例中使用了不同的语句类型（select 和 update），以及使用了参数和结果的映射配置，以满足各种对医生表的查询和更新操作的需求。-->
+
+<!--        请注意，确保 Mapper XML 文件的路径和名称与 MyBatis 的配置文件中的映射器扫描配置相符，以使其能够正确加载和使用。-->

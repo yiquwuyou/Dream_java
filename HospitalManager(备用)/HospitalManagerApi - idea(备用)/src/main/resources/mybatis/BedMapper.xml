@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.rabbiter.hospital.mapper.BedMapper">
+    <select id="bedPeople" resultType="Integer" parameterType="String">
+        select count(b_id) from bed where b_start = #{b_start}
+    </select>
+
+
+</mapper>
+        <!--这是一个 MyBatis 的 Mapper XML 配置文件示例，用于操作名为 BedMapper 的映射器接口。-->
+
+        <!--        以下是该文件的主要内容：-->
+
+        <!--        XML 文件的声明和 DTD 引用。-->
+
+        <!--        mapper 元素的 namespace 属性指定了对应的映射器接口的全限定名。-->
+
+        <!--        select 元素定义了一个名为 bedPeople 的查询语句，使用了参数 b_start。通过 resultType 属性指定查询返回结果的类型为 Integer。通过 parameterType 属性指定传入参数的类型为 String。-->
+
+        <!--        这个查询语句的目的是统计在 bed 表中，指定 b_start 值的记录数量。-->
+
+        <!--        需要注意的是，该示例中的 resultType 属性指定了返回结果的类型为 Integer，这意味着查询结果只返回一个整数值。实际情况下，可以根据需要修改 resultType 属性来匹配返回结果的类型，也可以使用 resultMap 来进行更复杂的结果映射。-->
+
+        <!--        此外，请确保 Mapper XML 文件的路径和名称与 MyBatis 的配置文件中的映射器扫描配置相符，以使其能够正确加载和使用。-->
