@@ -3,12 +3,22 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.rabbiter.hospital.mapper.ArrangeMapper">
+<!--    这是一个 MyBatis Mapper XML 文件的示例，用于定义与数据库表之间的映射关系和查询操作 -->
     <!--定义封装account和user的resultMap-->
+    <!--<resultMap> 元素：定义了一个名为 arrangeDoctorMap 的结果映射，用于将数据库查询的结果映射到Java对象。
+          这个结果映射包括了 Arrange 对象以及与之相关联的 Doctor 对象。在这里，你为每个属性指定了数据库列名和Java对象属性名之间的映射关系。-->
     <resultMap id="arrangeDoctorMap" type="com.rabbiter.hospital.pojo.Arrange">
+<!--        id 用于指定主键属性的映射关系-->
+<!--        property 属性指定了java对象的属性名-->
+<!--        column 属性指定了数据库表中的列名-->
         <id property="arId" column="ar_id" />
+<!--        result 用于指定普通属性的映射关系-->
         <result property="arTime" column="ar_time" />
         <result property="dId" column="d_id" />
         <!--一对一的关系映射，配置封装user的内容 column中指名从表的外键 property="user"指的是单个实体类的引用-->
+<!--        <association> 元素的作用是定义了一对一的关联映射关系，将两个实体对象关联起来 此处将 Arrange 和 Doctor 关联起来-->
+<!--        property 属性：指定了在主对象中用于关联的属性名 此处关联医生对象-->
+<!--        javaType 属性：指定了关联的对象类型-->
         <association property="doctor" javaType="com.rabbiter.hospital.pojo.Doctor">
             <result property="dId" column="d_id" />
             <result property="dName" column="d_name"/>
@@ -22,6 +32,8 @@
     </resultMap>
 
     <!--IAccountDao的查询所有-->
+<!--     <select> 元素：定义了一个名为 findByTime 的查询语句，该语句将返回一个包含 Arrange 和关联的 Doctor 对象的结果集-->
+<!--    用来查医生和排班的信息-->
     <select id="findByTime" resultMap="arrangeDoctorMap">
         select * from doctor d,arrange a where d.d_id=a.d_id and a.ar_time=#{ar_time} and d.d_section=#{d_section}
     </select>

@@ -6,7 +6,7 @@
 
 <!--        org.springframework.boot:spring-boot-starter: Spring Boot的核心依赖，用于构建Spring Boot应用程序。-->
 <!--        org.springframework.boot:spring-boot-starter-web: 用于构建Web应用程序的Spring Boot依赖。-->
-<!--        org.springframework.boot:spring-boot-starter-data-redis: 用于集成Redis缓存的Spring Boot依赖。-->
+<!--        org.springframework.boot:spring-boot-starter-data-: 用于集成Redis缓存的Spring Boot依赖。-->
 <!--        数据库连接相关依赖：-->
 
 <!--        mysql:mysql-connector-java: MySQL数据库连接器，用于连接MySQL数据库。-->

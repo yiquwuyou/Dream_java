@@ -3,6 +3,12 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="com.rabbiter.hospital.mapper.BedMapper">
+<!--    查询病床患者的人数-->
+<!--    select 元素定义了一个名为 bedPeople 的查询语句-->
+<!--    resultType 指定查询返回结果的类型为 Integer-->
+<!--    parameterType 指定传入参数的属性为 String-->
+<!--    查询指定日期病床上患者的数量-->
+<!--    count 是聚合函数，计算指定列的行数，此处是计算满足条件下的 b_id 的行数-->
     <select id="bedPeople" resultType="Integer" parameterType="String">
         select count(b_id) from bed where b_start = #{b_start}
     </select>
