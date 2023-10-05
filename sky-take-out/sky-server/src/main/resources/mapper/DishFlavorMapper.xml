@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.sky.mapper.DishFlavorMapper">
+
+<!--    collection="flavors": 这里指定了要迭代的集合名称，即flavors。-->
+
+<!--    item="df": 这里指定了在每次迭代中，集合中的元素应该赋值给df变量。 df 类似于别名-->
+
+<!--    separator=",": 这里指定了迭代生成的SQL语句之间的分隔符，这里是逗号-->
+    <insert id="insertBatch">
+        insert into dish_flavor (dish_id, name, value) VALUES
+        <foreach collection="flavors" item="df" separator=",">
+            (#{df.dishId},#{df.name},#{df.value})
+        </foreach>
+    </insert>
+</mapper>
