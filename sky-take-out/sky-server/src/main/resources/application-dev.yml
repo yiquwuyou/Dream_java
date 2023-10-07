@@ -11,3 +11,8 @@ sky:
     access-key-id: LTAI5tRrowseRixd7JX8phzU
     access-key-secret: rD1H9iGoGXZIm65w9YDRbcl9Bqoeci
     bucket-name: quwuyou-1
+  redis:
+    host: localhost
+    port: 6379
+    password:
+    database: 0
