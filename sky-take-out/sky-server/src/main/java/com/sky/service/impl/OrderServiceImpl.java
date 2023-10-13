@@ -22,6 +22,7 @@ import com.sky.vo.OrderPaymentVO;
 import com.sky.vo.OrderStatisticsVO;
 import com.sky.vo.OrderSubmitVO;
 import com.sky.vo.OrderVO;
+import com.sky.websocket.WebSocketServer;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -52,6 +53,8 @@ public class OrderServiceImpl implements OrderService {
     private UserMapper userMapper;
     @Autowired
     private WeChatPayUtil weChatPayUtil;
+    @Autowired
+    private WebSocketServer webSocketServer;
 
     @Value("${sky.shop.address}")
     private String shopAddress;
@@ -93,7 +96,9 @@ public class OrderServiceImpl implements OrderService {
         orders.setOrderTime(LocalDateTime.now());
         orders.setPayStatus(Orders.UN_PAID);
 //        orders.setAddress(addressBook.getDetail());
-        orders.setStatus(Orders.PENDING_PAYMENT);
+//        orders.setStatus(Orders.PENDING_PAYMENT);
+        // todo： 因为此处微信支付无法调用，默认使提交订单状态码为2 待接单，不再是1，未支付
+        orders.setStatus(Orders.TO_BE_CONFIRMED);
         orders.setNumber(String.valueOf(System.currentTimeMillis()));
         orders.setPhone(addressBook.getPhone());
         orders.setConsignee(addressBook.getConsignee());
@@ -122,6 +127,17 @@ public class OrderServiceImpl implements OrderService {
                 .orderAmount(orders.getAmount())
                 .build();
 
+        // todo: return 前的这一段到时候删除 正常是在 paySuccess 里面写的
+        // 通过websocket向客户端浏览器推送消息 type orderId content
+        Map map = new HashMap();
+        map.put("type",1); // 1表示来单提醒，2表示客户催单
+        map.put("orderId", orderSubmitVO.getId());
+        map.put("content","订单号：" + orderSubmitVO.getOrderNumber());
+
+        String json = JSON.toJSONString(map);
+        webSocketServer.sendToAllClient(json);
+
+
         return orderSubmitVO;
     }
 
@@ -143,7 +159,6 @@ public class OrderServiceImpl implements OrderService {
                 "苍穹外卖订单", //商品描述
                 user.getOpenid() //微信用户的openid
         );
-
         if (jsonObject.getString("code") != null && jsonObject.getString("code").equals("ORDERPAID")) {
             throw new OrderBusinessException("该订单已支付");
         }
@@ -173,6 +188,15 @@ public class OrderServiceImpl implements OrderService {
                 .build();
 
         orderMapper.update(orders);
+
+        // 通过websocket向客户端浏览器推送消息 type orderId content
+        Map map = new HashMap();
+        map.put("type",1); // 1表示来单提醒，2表示客户催单
+        map.put("orderId", ordersDB.getId());
+        map.put("content","订单号：" + outTradeNo);
+
+        String json = JSON.toJSONString(map);
+        webSocketServer.sendToAllClient(json);
     }
 
     /**
@@ -568,5 +592,27 @@ public class OrderServiceImpl implements OrderService {
             //配送距离超过5000米
             throw new OrderBusinessException("超出配送范围");
         }
+    }
+
+    /**
+     * 客户催单
+     * @param id
+     */
+    public void reminder(Long id) {
+        // 根据id查询订单
+        Orders ordersDB = orderMapper.getById(id);
+
+        // 校验订单是否存在
+        if (ordersDB == null) {
+            throw new OrderBusinessException(MessageConstant.ORDER_STATUS_ERROR);
+        }
+
+        Map map = new HashMap();
+        map.put("type", 2);   // 1表示来单提醒，2表示客户催单
+        map.put("orderId", id);
+        map.put("content", "订单号：" + ordersDB.getNumber());
+
+        // 通过websocket向客户端浏览器推送信息
+        webSocketServer.sendToAllClient(JSON.toJSONString(map));
     }
 }
