@@ -54,10 +54,11 @@ public class OrderTask {
 
         if(ordersList != null && ordersList.size() > 0){
             for (Orders orders : ordersList){
+
                 orders.setStatus(Orders.COMPLETED);
                 orderMapper.update(orders);
+
             }
         }
-
     }
 }
