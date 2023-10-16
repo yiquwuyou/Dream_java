@@ -2,17 +2,7 @@ import java.util.Scanner;
 
 public class SymmetricalDiamondWithSpacing {
 
-    public static void main(String[] args) {
-
-        Scanner scanner = new Scanner(System.in);
-        System.out.print("请输入一个奇数 n：");
-        int n = scanner.nextInt();
-
-        if (n % 2 == 0) {
-            System.out.println("请输入一个奇数以生成对称菱形。");
-            return;
-        }
-
+    public static void Print(int n){
         int spaces = n / 2;
         int stars = 1;
 
@@ -46,5 +36,17 @@ public class SymmetricalDiamondWithSpacing {
             }
             System.out.println();
         }
+    }
+    public static void main(String[] args) {
+
+        Scanner scanner = new Scanner(System.in);
+        System.out.print("请输入一个奇数 n：");
+        int n = scanner.nextInt();
+
+        if (n % 2 == 0) {
+            System.out.println("请输入一个奇数以生成对称菱形。");
+            return;
+        }
+        SymmetricalDiamondWithSpacing.Print(n);
     }
 }
