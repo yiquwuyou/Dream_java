@@ -39,7 +39,7 @@ class ATM {
     }
 
     public static void main(String[] args) {
-        ATM atm = new ATM("123456789", "张三", 1000.0);
+        ATM atm = new ATM("123456789", "李四", 500.0);
 
         Scanner scanner = new Scanner(System.in);
         int choice;
