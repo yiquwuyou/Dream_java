@@ -24,7 +24,7 @@ import java.util.List;
 /**
  * 配置类，注册web层相关组件
  */
-@Configuration
+@Configuration  //指定为配置类
 @Slf4j
 public class WebMvcConfiguration extends WebMvcConfigurationSupport {
 
@@ -43,8 +43,8 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
         log.info("开始注册自定义拦截器...");
         // 设置什么路径的请求该拦什么不该拦
         registry.addInterceptor(jwtTokenAdminInterceptor)
-                .addPathPatterns("/admin/**")
-                .excludePathPatterns("/admin/employee/login");
+                .addPathPatterns("/admin/**")  // 指定拦截的资源路径
+                .excludePathPatterns("/admin/employee/login");   // 指定不需要拦截的资源路径
         registry.addInterceptor(jwtTokenUserInterceptor)
                 .addPathPatterns("/user/**")
                 .excludePathPatterns("/user/user/login")
