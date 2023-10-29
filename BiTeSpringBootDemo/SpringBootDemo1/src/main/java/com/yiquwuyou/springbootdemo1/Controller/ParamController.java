@@ -13,7 +13,7 @@ import java.util.Arrays;
 import java.util.List;
 
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/user1")
 public class ParamController {
 
     @RequestMapping("/m1")
