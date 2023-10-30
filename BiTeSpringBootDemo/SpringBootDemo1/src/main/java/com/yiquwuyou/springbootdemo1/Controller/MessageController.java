@@ -12,6 +12,7 @@ import java.util.List;
 public class MessageController {
 
     private List<MessageInfo> messageInfos = new ArrayList<>();
+
     @RequestMapping("/publish")
     public Boolean publishMessage(MessageInfo messageInfo){
         // 进行参数的校验
