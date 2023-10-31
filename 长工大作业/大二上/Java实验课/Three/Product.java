@@ -16,7 +16,8 @@ public class Product {
     // 重写toString方法
     @Override
     public String toString() {
-        return "商品名称：" + name + "，重量：" + weight + "千克，价格：" + price + "元，配件数量：" + accessoryCount + "个，制造厂商：" + manufacturer;
+        return "商品名称：" + name + "，重量：" + weight + "千克，价格："
+                + price + "元，配件数量：" + accessoryCount + "个，制造厂商：" + manufacturer;
     }
 
     // 重写equals方法，用于比较两个商品对象是否相同
