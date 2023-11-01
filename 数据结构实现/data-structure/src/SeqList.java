@@ -9,7 +9,7 @@ public class SeqList {
 
     // 构造方法，初始化5个空间
     public SeqList(){
-        this.elem = new int[5];
+        this.elem = new int[DEFAULT_CAPACITY];
     }
 
     // 打印顺序表
