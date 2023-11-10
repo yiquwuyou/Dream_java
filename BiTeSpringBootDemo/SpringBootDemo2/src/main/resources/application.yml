@@ -1,0 +1,45 @@
+#修改端口号
+server:
+  port: 9092
+# 数据相关配置
+spring:
+  datasource:
+    url: jdbc:mysql://127.0.0.1:3306/mycnblog?characterEncoding=utf8&useSSL=false
+    username: root
+    password: root
+  banner:
+    location: banner.txt
+
+demo:
+  key1: hello,yml
+  key2: aaaaaa
+  key3: 66666666
+# 下面三个表示意思一样，都表示空
+  key4: ''
+  key5:
+  key6: ""
+# null使用  ~
+  key7: ~
+
+String:
+  str1: hello \n Spring Boot.
+  str2: 'hello \n Spring Boot.'
+  str3: "hello \n Spring Boot."
+
+# yml配置对象
+student:
+  id: 18
+  name: zhangsan
+  age: 12
+
+# 配置集合
+# -后面必须有空格，如果没有的话，他们将会是一个整体。作为一个整体赋值给name
+dbtypes:
+  name:
+    - mysql
+    - sqlserver
+    - db2
+  map:
+    k1: kk1
+    k2: kk2
+    k3: kk3

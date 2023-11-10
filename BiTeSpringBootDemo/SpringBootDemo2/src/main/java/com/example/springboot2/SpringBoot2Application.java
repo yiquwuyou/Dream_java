@@ -1,13 +1,6 @@
 package com.example.springboot2;
 
-import com.example.springboot2.component.UserComponent;
-import com.example.springboot2.config.BeanConfig;
-import com.example.springboot2.config.UserConfig;
 import com.example.springboot2.config.UserInfo;
-import com.example.springboot2.controller.UController;
-import com.example.springboot2.controller.UserController;
-import com.example.springboot2.repo.UserRepository;
-import com.example.springboot2.service.UserService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -18,12 +11,18 @@ import org.springframework.context.annotation.ComponentScan;
 public class SpringBoot2Application {
 
     public static void main(String[] args) {
-        // Spring上下文
+        // 获取Spring上下文对象
         ApplicationContext context = SpringApplication.run(SpringBoot2Application.class, args);
-        // 从context中获取bean
+        // 从context(Spring上下文)中获取bean
         // 通过类型拿bean
-        UserController bean = context.getBean(UserController.class);
-        bean.doUserController();
+//        UserController userController = context.getBean(UserController.class);
+//        userController.doUserController();
+        // 通过Bean名(对象名)取对象
+//        UserController userController2 = (UserController) context.getBean("userController");
+//        userController2.doUserController();
+//        // 通过Bean名和类型加在一起取对象
+//        UserController userController3 = context.getBean("userController",UserController.class);
+//        userController3.doUserController();
 
 //        UserService userService = context.getBean(UserService.class);
 //        userService.doService();
@@ -43,10 +42,10 @@ public class SpringBoot2Application {
 //
 //        UserRepository userRepository = context.getBean(UserRepository.class);
 //        userRepository.doRepository();
-//
+////
 //        UserComponent userComponent = context.getBean(UserComponent.class);
 //        userComponent.doComponent();
-//
+////
 //        UserConfig userConfig = context.getBean(UserConfig.class);
 //        userConfig.doConfig();
 //        System.out.println("userConfig:" + userConfig);
@@ -58,11 +57,11 @@ public class SpringBoot2Application {
 //        System.out.println(userConfig2 == userConfig);
 
         //@Bean演示
-//        UserInfo userInfo = (UserInfo)context.getBean("userInfo");
-//        System.out.println(userInfo);
+        UserInfo userInfo = context.getBean(UserInfo.class);
+        System.out.println(userInfo);
 //
-//        UserInfo userInfo2 = (UserInfo)context.getBean("userInfo2", UserInfo.class);
-//        System.out.println(userInfo2);
+        UserInfo userInfo2 = context.getBean(UserInfo.class);
+        System.out.println(userInfo2);
 //
 //        BeanConfig beanConfig = context.getBean(BeanConfig.class);
 //        System.out.println(beanConfig.userInfo("666"));
