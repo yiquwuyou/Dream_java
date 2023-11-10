@@ -18,7 +18,7 @@ public class BookController {
     @Autowired
     private BookService bookService;
 
-    @RequestMapping("/getBookList")
+    @RequestMapping("/getList")
     public List<BookInfo> getBookList(){
         // 1、获取图书的数据
         // 2、对图书的数据进行处理
