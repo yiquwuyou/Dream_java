@@ -43,3 +43,24 @@ dbtypes:
     k1: kk1
     k2: kk2
     k3: kk3
+
+logging:
+  level:
+    root: info
+    com:
+      example:
+        springboot2: debug
+  file:
+#    name: aaa.log   # 如果没有加路径，默认是放在当前项目下
+    name: logger/ioc.log
+#    path: logger1
+#  日志分割
+  logback:
+   rollingpolicy:
+     max-file-size: 1KB
+     file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}.%i
+  #修改日志格式
+  pattern:
+#    console: '%d{HH:mm:ss.SSS} %c %M %L [%thread] %m%n'
+#    file: '%d{HH:mm:ss.SSS} %c %M %L [%thread] %m%n'
+

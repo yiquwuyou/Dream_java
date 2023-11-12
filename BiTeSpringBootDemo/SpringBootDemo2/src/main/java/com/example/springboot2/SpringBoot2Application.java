@@ -57,11 +57,11 @@ public class SpringBoot2Application {
 //        System.out.println(userConfig2 == userConfig);
 
         //@Bean演示
-        UserInfo userInfo = context.getBean(UserInfo.class);
-        System.out.println(userInfo);
-//
-        UserInfo userInfo2 = context.getBean(UserInfo.class);
-        System.out.println(userInfo2);
+//        UserInfo userInfo = context.getBean(UserInfo.class);
+//        System.out.println(userInfo);
+////
+//        UserInfo userInfo2 = context.getBean(UserInfo.class);
+//        System.out.println(userInfo2);
 //
 //        BeanConfig beanConfig = context.getBean(BeanConfig.class);
 //        System.out.println(beanConfig.userInfo("666"));
