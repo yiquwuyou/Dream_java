@@ -37,7 +37,22 @@
     });
 
     $("#checkCaptcha").click(function () {
-        alert("验证码校验");
+      $.ajax({
+        type: "get",
+        url: "/admin/check",
+        data:{
+          captcha: $("#inputCaptcha").val()
+        },
+        success:function(result){
+          if(result){
+            location.href = "success.html";
+            // location.assign("success.html");   // 和上面这句一样，也是页面跳转
+          }else{
+            alert("验证码错误");
+          }
+        }
+      });
+        // alert("验证码校验");
     });
 
   </script>
