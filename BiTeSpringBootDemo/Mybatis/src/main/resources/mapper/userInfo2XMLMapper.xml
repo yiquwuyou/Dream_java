@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.mybatis.mapper.UserInfo2Mapper">
+    <insert id="insertByXML">
+        insert into userinfo
+        <trim suffixOverrides="," prefix="(" suffix=")">
+            <if test="username!=null">username,</if>
+            <if test="password!=null">password,</if>
+            <if test="age!=null">age,</if>
+            <if test="gender!=null">gender,</if>
+            <if test="phone!=null">phone</if>
+        </trim>
+        values
+        <trim suffixOverrides="," prefix="(" suffix=")">
+            <if test="username!=null">
+                #{username},
+            </if>
+            <if test="password!=null">
+                #{password},
+            </if>
+            <if test="age!=null">
+                #{age},
+            </if>
+            <if test="gender!=null">
+                #{gender},
+            </if>
+            <if test="phone!=null">
+                #{phone}
+            </if>
+        </trim>
+    </insert>
+    <select id="selectByCondition" resultType="com.example.mybatis.model.UserInfo">
+<!--        select * from userinfo-->
+<!--        where-->
+<!--        <trim prefixOverrides="and">-->
+<!--            <if test="username!=null">-->
+<!--                username=#{username}-->
+<!--            </if>-->
+<!--            <if test="age!=null">-->
+<!--                and age=#{age}-->
+<!--            </if>-->
+<!--            <if test="gender!=null">-->
+<!--                and gender=#{gender}-->
+<!--            </if>-->
+<!--        </trim>-->
+<!--    where 标签可以替代trim这里的功能-->
+<!--    真想使用where的话也可以按下面这种方式写 where后加1=1-->
+<!--        select * from userinfo-->
+<!--        where 1=1-->
+<!--        <trim prefixOverrides="and">-->
+<!--            <if test="username!=null">-->
+<!--                and username=#{username}-->
+<!--            </if>-->
+<!--            <if test="age!=null">-->
+<!--                and age=#{age}-->
+<!--            </if>-->
+<!--            <if test="gender!=null">-->
+<!--                and gender=#{gender}-->
+<!--            </if>-->
+<!--        </trim>-->
+
+        select * from userinfo
+        <where>
+            <if test="username!=null">
+                username=#{username}
+            </if>
+            <if test="age!=null">
+                and age=#{age}
+            </if>
+            <if test="gender!=null">
+                and gender=#{gender}
+            </if>
+        </where>
+    </select>
+
+    <select id="selectByCondition2" resultType="com.example.mybatis.model.UserInfo">
+        select * from userinfo
+        where
+        <trim prefixOverrides="and">
+            <if test="username!=null">
+                username=#{username}
+            </if>
+            <if test="age!=null">
+                and age=#{age}
+            </if>
+            <if test="gender!=null">
+                and gender=#{gender}
+            </if>
+        </trim>
+    </select>
+
+    <update id="updateByCondition">
+        update userinfo
+        set
+        <if test="username!=null">
+            username=#{username}
+        </if>
+        <if test="age!=null">
+            and age=#{age}
+        </if>
+        <if test="gender!=null">
+            and gender=#{gender}
+        </if>
+        where id=18
+    </update>
+</mapper>
+
