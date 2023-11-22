@@ -1,2 +1,1 @@
-2023-11-11 20:58:43.831  INFO 24004 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 9092 (http) with context path ''
-2023-11-11 20:58:43.841  INFO 24004 --- [main] c.e.springboot2.SpringBoot2Application   : Started SpringBoot2Application in 1.0 seconds (JVM running for 1.525)
+20:17:47.040 com.example.springboot2.SpringBoot2Application logStarted 61 [main] Started SpringBoot2Application in 1.92 seconds (JVM running for 2.677)

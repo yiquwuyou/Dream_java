@@ -56,11 +56,23 @@ logging:
 #    path: logger1
 #  日志分割
   logback:
-   rollingpolicy:
-     max-file-size: 1KB
-     file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}.%i
-  #修改日志格式
+    rollingpolicy:
+      max-file-size: 1KB
+      file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}.%i
+#  修改日志格式
   pattern:
-#    console: '%d{HH:mm:ss.SSS} %c %M %L [%thread] %m%n'
-#    file: '%d{HH:mm:ss.SSS} %c %M %L [%thread] %m%n'
+    console: '%d{HH:mm:ss.SSS} %c %M %L [%thread] %m%n'
+    file: '%d{HH:mm:ss.SSS} %c %M %L [%thread] %m%n'
 
+#logging:
+#  file:
+#    name: logger/ioc.log
+#  logback:
+#    rollingpolicy:
+#      max-file-size: 1KB
+#      file-name-pattern: ${LOG_FILE}.%d{yyyy-MM-dd}.%i
+#  level:
+#    root: info
+#    com:
+#      example:
+#        springboot2: debug
