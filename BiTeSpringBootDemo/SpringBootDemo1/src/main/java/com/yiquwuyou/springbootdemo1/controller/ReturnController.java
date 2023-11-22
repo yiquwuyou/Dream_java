@@ -1,11 +1,10 @@
-package com.yiquwuyou.springbootdemo1.Controller;
+package com.yiquwuyou.springbootdemo1.controller;
 
 
-import com.yiquwuyou.springbootdemo1.Person;
+import com.yiquwuyou.springbootdemo1.model.Person;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletResponse;
 import java.util.HashMap;

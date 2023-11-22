@@ -1,17 +1,19 @@
-package com.yiquwuyou.springbootdemo1.Controller;
+package com.yiquwuyou.springbootdemo1.model;
 
 import lombok.Data;
-import lombok.Getter;
-import lombok.Setter;
-import lombok.ToString;
+
+import java.util.Date;
 
 @Data    // 组合注解，集成了@Getter @Setter @ToString 等注解
 //@ToString
 //@Getter
 //@Setter
 public class MessageInfo {
+    private Integer id;
     private String from;
     private String to;
     private String message;
+    private Date createTime;
+    private Date updateTime;
 
 }

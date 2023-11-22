@@ -1,4 +1,4 @@
-package com.yiquwuyou.springbootdemo1;
+package com.yiquwuyou.springbootdemo1.model;
 
 public class Person {
     Integer id;

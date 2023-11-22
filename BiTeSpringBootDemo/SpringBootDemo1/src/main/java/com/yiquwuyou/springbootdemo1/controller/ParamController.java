@@ -1,6 +1,6 @@
-package com.yiquwuyou.springbootdemo1.Controller;
+package com.yiquwuyou.springbootdemo1.controller;
 
-import com.yiquwuyou.springbootdemo1.Person;
+import com.yiquwuyou.springbootdemo1.model.Person;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 

@@ -1,6 +1,5 @@
-package com.yiquwuyou.springbootdemo1.Controller;
+package com.yiquwuyou.springbootdemo1.controller;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
