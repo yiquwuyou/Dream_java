@@ -1,15 +1,13 @@
 package com.example.demo.config;
 
-import com.example.demo.Controller.TestWebSocketController;
-import com.example.demo.Controller.WebSocketController;
+import com.example.demo.controller.TestWebSocketController;
+import com.example.demo.controller.WebSocketController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
-
-import javax.annotation.Resource;
 
 @Configuration
 @EnableWebSocket   // 让 spring 知道这个类开启了 websocket

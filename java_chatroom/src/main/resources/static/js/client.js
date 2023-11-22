@@ -29,7 +29,7 @@ function initSwitchTab() {
         tabSession.style.backgroundImage = 'url(img/对话2.png)';
         tabFriend.style.backgroundImage = 'url(img/用户.png)'
         // b) 让好友列表显示, 让会话列表隐藏
-        lists[0].classList = 'list hide';
+        lists[0].classList = 'list hide';//第一个，这个hide用法是什么
         lists[1].classList = 'list';
     }
 }
@@ -42,7 +42,7 @@ initSwitchTab();
 
 // 创建 websocket 实例
 //let websocket = new WebSocket("ws://localhost:8080/WebSocketMessage");
- let websocket = new WebSocket("ws://" + location.host + "/WebSocketMessage");
+ let websocket = new WebSocket("ws://" + location.host + "/WebSocketMessage");//第二个，这个路径是什么
 
 websocket.onopen = function() {
     console.log("websocket 连接成功!");
@@ -75,10 +75,11 @@ function handleMessage(resp) {
 
     // 1. 根据响应中的 sessionId 获取到当前会话对应的 li 标签. 
     //    如果 li 标签不存在, 则创建一个新的
-    let curSessionLi = findSessionLi(resp.sessionId);
+    let curSessionLi = findSessionLi(resp.sessionId);//第三个，这个sessionId是啥
     if (curSessionLi == null) {
         // 就需要创建出一个新的 li 标签, 表示新会话. 
         curSessionLi = document.createElement('li');
+        //setAttribute：设置指定元素的属性值。如果属性已经存在，则更新值；否则，将添加具有指定名称和值的新属性。
         curSessionLi.setAttribute('message-session-id', resp.sessionId);
         // 此处 p 标签内部应该放消息的预览内容. 一会后面统一完成, 这里先置空
         curSessionLi.innerHTML = '<h3>' + resp.fromName + '</h3>'
