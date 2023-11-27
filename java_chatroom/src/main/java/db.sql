@@ -76,3 +76,18 @@ insert into message values (10, 2, 1, '随便', '2000-05-01 17:09:00');
 
 -- 张三和王五发的消息
 insert into message values(7, 1, 2, '晚上一起约?', '2000-05-02 12:00:00');
+
+CREATE TABLE add_friend
+(
+    id           INT AUTO_INCREMENT PRIMARY KEY,
+    fromId   INT,
+    fromName VARCHAR(128),
+    toId     INT,
+    toName   VARCHAR(128),
+    isAgree      INT DEFAULT 2,   -- 1 同意  0 拒绝  2 未同意
+    isDeleted    INT  DEFAULT 1,   -- 1 删了  0 没删
+    createTime   DATETIME DEFAULT now(),
+    updateTime   DATETIME DEFAULT now() ON UPDATE now()
+);
+
+

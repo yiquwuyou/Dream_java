@@ -2,6 +2,7 @@ package com.example.demo.mapper;
 
 import com.example.demo.model.User;
 import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Select;
 
 @Mapper
 public interface UserMapper {
@@ -11,4 +12,8 @@ public interface UserMapper {
 
     // 根据用户名查询用户信息 -> 登录
     User selectByName(String username);
+
+    @Select("select userId from user where username = #{username}")
+    Integer selectIdByUserName(String username);
+
 }

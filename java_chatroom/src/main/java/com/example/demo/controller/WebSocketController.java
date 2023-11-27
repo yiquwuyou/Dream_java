@@ -3,11 +3,16 @@ package com.example.demo.controller;
 import com.example.demo.component.OnlineUserManager;
 import com.example.demo.mapper.MessageMapper;
 import com.example.demo.mapper.MessageSessionMapper;
+import com.example.demo.model.AddFriend;
 import com.example.demo.model.Friend;
 import com.example.demo.model.Message;
 import com.example.demo.model.User;
+import com.example.demo.service.FriendService;
+import com.example.demo.service.UserService;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import io.swagger.annotations.Api;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.CloseStatus;
@@ -18,6 +23,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import java.io.IOException;
 import java.util.List;
 
+@Slf4j
 @Component
 @Api(tags = "websocket")
 public class WebSocketController extends TextWebSocketHandler {
@@ -30,6 +36,12 @@ public class WebSocketController extends TextWebSocketHandler {
 
     @Autowired
     private MessageMapper messageMapper;
+
+    @Autowired
+    private UserService userService;
+
+    @Autowired
+    private FriendService friendService;
 
     // String 自带的，所以不需要注入
     private ObjectMapper objectMapper = new ObjectMapper();
@@ -66,11 +78,107 @@ public class WebSocketController extends TextWebSocketHandler {
         if (request.getType().equals("message")) {
             // 就进行消息转发
             transferMessage(user, request);
+        } else if (request.getType().equals("friend")) {
+            transferfriend(user, request);
+        } else if (request.getType().equals("agreefriend")) {
+            transferAgreeFriend(user, request);
+        } else if (request.getType().equals("refusefriend")) {
+            transferRefuseFriend(user, request);
         } else {
             System.out.println("[WebSocketAPI] request.type 有误！" + message.getPayload());
         }
     }
 
+    // 通过这个方法来完成加群聊的查询，转发，存储操作
+    // 通过这个方法来进行同意加入群聊后的数据处理
+    // 通过这个方法来进行拒绝加入群聊后的数据处理
+    // 通过这个方法进行同意好友后的数据处理
+    private void transferAgreeFriend(User fromUser, MessageRequest request) throws IOException {
+        // 1、先构造一个待转发的响应对象。 MessageResponse
+        MessageResponse response = new MessageResponse();
+        response.setType("agreefriend");
+        response.setFromId(fromUser.getUserId());
+        response.setFromName(fromUser.getUsername());
+        response.setToName(request.getToUsername());
+        response.setIsAgree(1);
+        response.setToId(userService.selectIdByUserName(request.getToUsername()));
+        // 把这个 java 对象转成 json 格式字符串
+        String responseJson = objectMapper.writeValueAsString(response);
+        log.info("[transferMessage] responseJson:" + responseJson);
+        // 修改add_friend中的数据
+        AddFriend addFriend = new AddFriend();
+        BeanUtils.copyProperties(addFriend, response);
+        friendService.updateAgreeFriend(addFriend);
+        // 添加friend表中的数据
+        friendService.insertfriend(addFriend.getFromId(), addFriend.getToId());
+        // 转发
+        WebSocketSession webSocketSession1 = onlineUserManager.getSession(response.getFromId());
+        WebSocketSession webSocketSession2 = onlineUserManager.getSession(response.getToId());
+        if (webSocketSession1 != null) {
+            // 如果该用户在线，则发送
+            webSocketSession1.sendMessage(new TextMessage(responseJson));
+        }
+        if (webSocketSession2 != null) {
+            // 如果该用户在线，则发送
+            webSocketSession2.sendMessage(new TextMessage(responseJson));
+        }
+        // 前端接收同意后，主动发起http请求，重加载好友列表
+
+    }
+    // 通过这个方法进行拒绝好友后的数据处理
+    private void transferRefuseFriend(User fromUser, MessageRequest request) throws IOException {
+        // 1、先构造一个待转发的响应对象。 MessageResponse
+        MessageResponse response = new MessageResponse();
+        response.setType("refusefriend");
+        response.setFromId(fromUser.getUserId());
+        response.setFromName(fromUser.getUsername());
+        response.setToName(request.getToUsername());
+        response.setIsAgree(0);
+        response.setToId(userService.selectIdByUserName(request.getToUsername()));
+        // 把这个 java 对象转成 json 格式字符串
+        String responseJson = objectMapper.writeValueAsString(response);
+        log.info("[transferMessage] responseJson:" + responseJson);
+        // 转发
+        WebSocketSession webSocketSession1 = onlineUserManager.getSession(response.getFromId());
+        WebSocketSession webSocketSession2 = onlineUserManager.getSession(response.getToId());
+        if (webSocketSession1 != null) {
+            // 如果该用户在线，则发送
+            webSocketSession1.sendMessage(new TextMessage(responseJson));
+        }
+        if (webSocketSession2 != null) {
+            // 如果该用户在线，则发送
+            webSocketSession2.sendMessage(new TextMessage(responseJson));
+        }
+    }
+    // 通过这个方法来完成加好友信息的查询，转发，存储操作
+    private void transferfriend(User fromUser, MessageRequest request) throws IOException {
+        // 1、先构造一个待转发的响应对象。 MessageResponse
+        MessageResponse response = new MessageResponse();
+        response.setType("friend");
+        response.setFromId(fromUser.getUserId());
+        response.setFromName(fromUser.getUsername());
+        response.setToName(request.getToUsername());
+        response.setIsAgree(2);
+        response.setToId(userService.selectIdByUserName(request.getToUsername()));
+        // 把这个 java 对象转成 json 格式字符串
+        String responseJson = objectMapper.writeValueAsString(response);
+        log.info("[transferMessage] responseJson:" + responseJson);
+        // 存储
+        AddFriend addFriend = new AddFriend();
+        BeanUtils.copyProperties(addFriend, response);
+        friendService.addFriendAn(addFriend);
+        // 转发
+        WebSocketSession webSocketSession1 = onlineUserManager.getSession(response.getFromId());
+        WebSocketSession webSocketSession2 = onlineUserManager.getSession(response.getToId());
+        if (webSocketSession1 != null) {
+            // 如果该用户在线，则发送
+            webSocketSession1.sendMessage(new TextMessage(responseJson));
+        }
+        if (webSocketSession2 != null) {
+            // 如果该用户在线，则发送
+            webSocketSession2.sendMessage(new TextMessage(responseJson));
+        }
+    }
     // 通过这个方法来完成消息实际的转发操作
     // 第一个参数就表示这个要转发的消息，是从谁那里来的
     private void transferMessage(User fromUser, MessageRequest request) throws IOException {

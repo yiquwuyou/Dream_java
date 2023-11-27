@@ -10,5 +10,8 @@ public class MessageRequest {
     private String type = "message";
     private int sessionId;
     private String content;
+    private int userId;
+    private String username;
+    private String toUsername;
 
 }

@@ -4,24 +4,25 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f61434b4-8e40-459e-9c29-59fcba96f335" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/MessageWall_MyBatis/src/main/java/com/example/messagewall_mybatis/controller/MessageController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/MessageWall_MyBatis/src/main/java/com/example/messagewall_mybatis/mapper/MessageMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/MessageWall_MyBatis/src/main/java/com/example/messagewall_mybatis/model/MessageInfo.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/MessageWall_MyBatis/src/main/java/com/example/messagewall_mybatis/service/MessageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/MessageWall_MyBatis/src/main/resources/static/messagewall.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/mapper/MessageMapper.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/service/MessageService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/resources/application.yml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/test/java/com/yiquwuyou/springbootdemo1/mapper/MessageMapperTest.java" afterDir="false" />
+    <list default="true" id="f61434b4-8e40-459e-9c29-59fcba96f335" name="Changes" comment="网页聊天室">
+      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/config/WebConfig.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/constant/Constants.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/enums/ResultCode.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/interceptor/LoginInterceptor.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/model/Result.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/resources/mapper/BookInfoMapper.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../JavaExperiment/JavaExperiment.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ListDemo1/ListDemo1.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../ListDemo1/out/production/ListDemo1/ListDemo1.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/dataSources.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/WebMvcConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MessageRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/WebMvcConfiguration.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Suanfa/JianZhiOffer/JianZhiOffer/JZ24.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Suanfa/JianZhiOffer/JianZhiOffer/JZ6.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../Suanfa/JianZhiOffer/JianZhiOffer/JianZhiOffer.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MessageResponse.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/FriendService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/UserService.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java_everything/.idea/java_everything.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../java_everything/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python_code/main.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../untitled/out/production/untitled/untitled.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../untitled/out/production/实验作业/实验作业.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../untitled/实验作业.iml" afterDir="false" />
@@ -32,76 +33,36 @@
       <change afterPath="$PROJECT_DIR$/../长工大作业/大二上/Java实验课/out/production/Java实验课/Three.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../长工大作业/大二上/Java实验课/out/production/Java实验课/out/production/Three/Three.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../长工大作业/长工大作业.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/controller/BookController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/controller/BookController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/enums/BookStatusEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/enums/BookStatusEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/mapper/BookInfoMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/mapper/BookInfoMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/service/BookService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/service/BookService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/resources/static/book_list.html" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/resources/static/book_list.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Mybatis/src/main/java/com/example/mybatis/mapper/UserInfo2Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Mybatis/src/main/java/com/example/mybatis/mapper/UserInfo2Mapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Mybatis/src/main/resources/mapper/userInfo2XMLMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Mybatis/src/main/resources/mapper/userInfo2XMLMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Mybatis/src/test/java/com/example/mybatis/mapper/UserInfo2MapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Mybatis/src/test/java/com/example/mybatis/mapper/UserInfo2MapperTest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/Controller/CalcController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/controller/CalcController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/Controller/HelloController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/controller/HelloController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/Controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/Controller/MessageInfo.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/model/MessageInfo.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/Controller/ParamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/controller/ParamController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/Controller/ReturnController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/controller/ReturnController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/Person.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/model/Person.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/resources/application.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/logger/ioc.log" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/logger/ioc.log" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/logger/ioc.log.2023-11-11.0" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/logger/ioc.log.2023-11-11.0.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/logger/ioc.log.2023-11-11.1" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/logger/ioc.log.2023-11-11.1.gz" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/logger/ioc.log.2023-11-11.2" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/logger/ioc.log.2023-11-11.3" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/logger1/spring.log" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/src/main/java/com/example/springboot2/facade/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/src/main/java/com/example/springboot2/facade/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo2/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo3/src/main/java/com/example/springbootdemo3/CaptchaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo3/src/main/java/com/example/springbootdemo3/CaptchaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo3/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo3/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Delete/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Delete/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Delete/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Delete/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MessageWall/MessageWall" beforeDir="false" afterPath="$PROJECT_DIR$/../MessageWall/MessageWall" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/FriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FriendController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/MessageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MessageController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/MessageRequest.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/MessageResponse.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/MessageSessionController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MessageSessionController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/TestWebSocketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/TestWebSocketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/Controller/WebSocketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/WebSocketController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/DemoApplication.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/WebSocketConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/WebSocketConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Friend.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Message.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/MessageSession.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/MessageSession.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/MessageSessionUserItem.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/MessageSessionUserItem.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/static/js/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/static/js/client.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FriendController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FriendController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MessageRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/WebSocketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/WebSocketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/FriendMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/FriendMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db.sql" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/FriendController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/FriendController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/MessageController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/MessageController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/MessageRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/MessageRequest.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/MessageResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/MessageResponse.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/MessageSessionController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/MessageSessionController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/TestWebSocketController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/TestWebSocketController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/UserController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/WebSocketController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/WebSocketController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/DemoApplication.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/DemoApplication.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/WebSocketConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/WebSocketConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/Friend.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/Friend.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/Message.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/MessageSession.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/MessageSession.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/MessageSessionUserItem.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/MessageSessionUserItem.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/User.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/static/js/client.js" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/static/js/client.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/java_chatroom-0.0.1-SNAPSHOT - 副本.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/java_chatroom-0.0.1-SNAPSHOT.jar" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/java_chatroom-0.0.1-SNAPSHOT.jar.original" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-archiver/pom.properties" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.demo.DemoApplicationTests.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/surefire-reports/com.example.demo.DemoApplicationTests.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/FriendMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/FriendMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java_everything/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../java_everything/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sky-take-out/sky-server/src/main/java/com/sky/controller/user/DishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sky-take-out/sky-server/src/main/java/com/sky/controller/user/DishController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -150,39 +111,53 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/code_github/Dream_java/java_chatroom&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Project&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.Java&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;1b1545388864b89f22e1d447eb70778c&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/code_github/Dream_java/Delete",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "preferences.pluginManager",
+    "spring.configuration.checksum": "1b1545388864b89f22e1d447eb70778c",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.demo.config" />
     </key>
   </component>
   <component name="RunManager" selected="Spring Boot.DemoApplication">
+    <configuration name="Constrction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.delete.Constrction" />
+      <module name="java_chatroom" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.delete.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="Constrction" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.delete.Constrction" />
       <module name="java_chatroom" />
@@ -205,6 +180,26 @@
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.DemoApplication" />
+      <module name="java_chatroom" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.example.demo.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DemoApplication" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <module name="java_chatroom" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.example.demo.DemoApplication" />
       <method v="2">
         <option name="Make" enabled="true" />
       </method>
@@ -261,8 +256,27 @@
       <workItem from="1700477369373" duration="40000" />
       <workItem from="1700529597937" duration="3000" />
       <workItem from="1700529624857" duration="13000" />
-      <workItem from="1700655456816" duration="635000" />
+      <workItem from="1700655456816" duration="729000" />
+      <workItem from="1700658806368" duration="2758000" />
+      <workItem from="1700711059159" duration="32000" />
+      <workItem from="1700737809972" duration="1338000" />
+      <workItem from="1700739162417" duration="9156000" />
+      <workItem from="1700792196698" duration="2142000" />
+      <workItem from="1700794379550" duration="10331000" />
+      <workItem from="1700903854804" duration="9000" />
+      <workItem from="1700907219013" duration="2352000" />
+      <workItem from="1701010135151" duration="132000" />
+      <workItem from="1701051581309" duration="3858000" />
     </task>
+    <task id="LOCAL-00001" summary="网页聊天室">
+      <option name="closed" value="true" />
+      <created>1700656300318</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1700656300318</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -278,6 +292,10 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="网页聊天室" />
+    <option name="LAST_COMMIT_MESSAGE" value="网页聊天室" />
   </component>
   <component name="XSLT-Support.FileAssociations.UIState">
     <expand />
