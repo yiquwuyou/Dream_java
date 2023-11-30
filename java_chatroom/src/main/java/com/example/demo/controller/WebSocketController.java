@@ -79,10 +79,13 @@ public class WebSocketController extends TextWebSocketHandler {
             // 就进行消息转发
             transferMessage(user, request);
         } else if (request.getType().equals("friend")) {
+            // 发送加好友请求
             transferfriend(user, request);
         } else if (request.getType().equals("agreefriend")) {
+            // 同意加好友
             transferAgreeFriend(user, request);
         } else if (request.getType().equals("refusefriend")) {
+            // 拒绝加好友
             transferRefuseFriend(user, request);
         } else {
             System.out.println("[WebSocketAPI] request.type 有误！" + message.getPayload());

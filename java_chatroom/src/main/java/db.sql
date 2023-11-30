@@ -77,6 +77,7 @@ insert into message values (10, 2, 1, '随便', '2000-05-01 17:09:00');
 -- 张三和王五发的消息
 insert into message values(7, 1, 2, '晚上一起约?', '2000-05-02 12:00:00');
 
+--  关于加好友的表
 CREATE TABLE add_friend
 (
     id           INT AUTO_INCREMENT PRIMARY KEY,
