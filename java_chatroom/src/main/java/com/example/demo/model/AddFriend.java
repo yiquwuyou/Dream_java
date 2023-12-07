@@ -12,7 +12,7 @@ public class AddFriend {
     private Integer toId;
     private String toName;
     private Integer isAgree;
-    private Integer isDelete;
+    private Integer isDeleted;
     private Date createTime;
     private Date updateTime;
 }

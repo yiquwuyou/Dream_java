@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import io.swagger.annotations.ApiModel;
 import lombok.Data;
+import org.springframework.web.bind.annotation.CrossOrigin;
 
 // 表示响应
 @ApiModel(value = "表示每条消息的响应")

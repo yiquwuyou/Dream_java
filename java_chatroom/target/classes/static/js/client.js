@@ -174,6 +174,9 @@ function getUserInfo() {
     $.ajax({
         type: 'get',
         url: 'userInfo',
+        beforeSend:function(xhr){
+            xhr.setRequestHeader("token","eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE3MDQzODczMTYsInVzZXJJZCI6IjEiLCJ1c2VybmFtZSI6InpoYW5nc2FuIn0.hMmYsEhQTZV1QEBXZrX8JGBraep1D0QaE8inVz4aMuk");
+        },
         success: function(body) {
             // 从服务器获取到数据. 
             // 校验结果是否有效. 

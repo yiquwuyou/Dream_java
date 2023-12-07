@@ -3,10 +3,7 @@ package com.example.demo.controller;
 
 import com.example.demo.mapper.MessageMapper;
 import com.example.demo.mapper.MessageSessionMapper;
-import com.example.demo.model.Friend;
-import com.example.demo.model.MessageSession;
-import com.example.demo.model.MessageSessionUserItem;
-import com.example.demo.model.User;
+import com.example.demo.model.*;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.transaction.annotation.Transactional;
@@ -21,6 +18,7 @@ import java.util.List;
 
 @Api(tags = "左侧会话列表")
 @RestController
+@CrossOrigin(origins="*")
 public class MessageSessionController {
     @Resource
     private MessageSessionMapper messageSessionMapper;
@@ -34,17 +32,10 @@ public class MessageSessionController {
     @ResponseBody
     public Object getMessageSessionList(HttpServletRequest request){
         List<MessageSession> messageSessionList = new ArrayList<>();
-        // 1、获取到当前用户的 userId (从 spring 的 session 中获取)
-        HttpSession session = request.getSession(false);
-        if (session == null) {
-            System.out.println("[getMessageSessionList] session == null");
-            return messageSessionList;
-        }
-        User user = (User) session.getAttribute("user");
-        if (user == null) {
-            System.out.println("[getMessageSessionList] user == null");
-            return messageSessionList;
-        }
+        // 1、从 token 中获取用户信息
+        User user = new User();
+        user.setUserId(UserJwt.getUserId());
+        user.setUsername(UserJwt.getUsername());
         // 2、根据 userId 查询数据库，查出来有哪些会话id
         List<Integer> sessionIdlist = messageSessionMapper.getSessionIdsByUserId(user.getUserId());
         for (int sessionId : sessionIdlist) {
@@ -73,9 +64,11 @@ public class MessageSessionController {
     @ResponseBody
     // 通过下面这个注解来让此方法引入到事务当中，变成类似于原子性的操作，更加安全   若中间出现异常，则会自动进行回滚
     @Transactional
-    // 可以直接通过这个注解 @SessionAttribute("user") 来获取 session ，并放置到 user 对象里
-    // 有缺点，不一定比上面那个原生的好
-    public Object addMessageSession(int toUserId, @SessionAttribute("user") User user) {
+    public Object addMessageSession(int toUserId) {
+        // 从 token 中获取用户信息
+        User user = new User();
+        user.setUserId(UserJwt.getUserId());
+        user.setUsername(UserJwt.getUsername());
         // 设置这个的目的是返回一个 json 字符串
         HashMap<String, Integer> resp = new HashMap<>();
         // 进行数据库的插入操作

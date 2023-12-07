@@ -13,4 +13,5 @@ public class User {
     private String username = "";
     @ApiModelProperty("密码")
     private String password = "";
+
 }

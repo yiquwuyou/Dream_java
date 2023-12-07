@@ -4,6 +4,7 @@ import com.example.demo.mapper.MessageMapper;
 import com.example.demo.model.Message;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -13,6 +14,7 @@ import java.util.List;
 
 @Api(tags = "查聊天信息")
 @RestController
+@CrossOrigin(origins="*")
 public class MessageController {
     @Resource
     private MessageMapper messageMapper;

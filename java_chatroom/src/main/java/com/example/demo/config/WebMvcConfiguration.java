@@ -55,4 +55,5 @@ public class WebMvcConfiguration extends WebMvcConfigurationSupport {
 //        registry.addResourceHandler("/img/**").addResourceLocations("classpath:/static/img/");
 //        registry.addResourceHandler("/js/**").addResourceLocations("classpath:/static/js/");
     }
+
 }

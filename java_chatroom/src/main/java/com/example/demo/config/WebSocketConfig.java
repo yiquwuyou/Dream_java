@@ -4,11 +4,13 @@ import com.example.demo.controller.TestWebSocketController;
 import com.example.demo.controller.WebSocketController;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.socket.config.annotation.EnableWebSocket;
 import org.springframework.web.socket.config.annotation.WebSocketConfigurer;
 import org.springframework.web.socket.config.annotation.WebSocketHandlerRegistry;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
+@CrossOrigin(origins="*")
 @Configuration
 @EnableWebSocket   // 让 spring 知道这个类开启了 websocket
 public class WebSocketConfig implements WebSocketConfigurer {
@@ -27,6 +29,7 @@ public class WebSocketConfig implements WebSocketConfigurer {
         registry.addHandler(webSocketController, "/WebSocketMessage")
                 // 通过注册这个特定的 HttpSession 拦截器，就可以把用户给 HttpSession 中添加的 Attribute 键值对
                 // 往我们的 WebSocketSession 里也添加一份
-                .addInterceptors(new HttpSessionHandshakeInterceptor());
+                .addInterceptors(new HttpSessionHandshakeInterceptor())
+                .setAllowedOrigins("*");
     }
 }
