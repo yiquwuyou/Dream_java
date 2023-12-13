@@ -37,4 +37,5 @@ public class InterceptorConfig  extends WebMvcConfigurationSupport {
                 .excludePathPatterns("/login")
                 .excludePathPatterns("/WebSocketMessage");
     }
+
 }
