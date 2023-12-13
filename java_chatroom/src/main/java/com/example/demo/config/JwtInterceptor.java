@@ -51,6 +51,7 @@ public class JwtInterceptor implements HandlerInterceptor {
             UserJwt.setUsername(userJwt.get("username"));
             UserJwt.setUserId(Integer.parseInt(userJwt.get("userId")));
             log.info(UserJwt.printf());
+            log.info("token验证通过");
             return true;
             // 根据不同的异常，设置不同的错误消息到“map”中，并将“state”设为“false”表示验证失败
         }catch (SignatureVerificationException e){  // 无效签名异常

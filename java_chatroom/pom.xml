@@ -57,6 +57,12 @@
 			<artifactId>knife4j-spring-boot-starter</artifactId>
 			<version>3.0.2</version>
 		</dependency>
+		<!--        阿里云oss/存储依赖-->
+		<dependency>
+			<groupId>com.aliyun.oss</groupId>
+			<artifactId>aliyun-sdk-oss</artifactId>
+			<version>3.15.1</version>
+		</dependency>
 		<!-- 引入jwt-->
 		<dependency>
 			<groupId>com.auth0</groupId>

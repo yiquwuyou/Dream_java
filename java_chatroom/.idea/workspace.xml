@@ -18,6 +18,14 @@
       <change afterPath="$PROJECT_DIR$/../Suanfa/JianZhiOffer/JianZhiOffer/JZ24.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Suanfa/JianZhiOffer/JianZhiOffer/JZ6.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Suanfa/JianZhiOffer/JianZhiOffer/JianZhiOffer.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/AliOssProperties.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/AliOssUtil.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/OssConfiguration.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CommonController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/CommonController.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/AliOssProperties.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/AliOssUtil.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/OssConfiguration.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../java_everything/.idea/java_everything.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../java_everything/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mq/src/main/java/com/example/mq/common/BinaryTool.java" afterDir="false" />
@@ -78,10 +86,16 @@
       <change beforePath="$PROJECT_DIR$/../HospitalManagerApi - idea/src/main/resources/mybatis/DoctorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalManagerApi - idea/src/main/resources/mybatis/DoctorMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MessageWall/MessageWall" beforeDir="false" afterPath="$PROJECT_DIR$/../MessageWall/MessageWall" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/InterceptorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/InterceptorConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/Test.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/TT.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/Test.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/JwtInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/JwtInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/WebMvcConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/WebMvcConfiguration.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/InterceptorConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/InterceptorConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/JwtInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/JwtInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/WebMvcConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/WebMvcConfiguration.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/demo/DemoApplicationTests.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../java_everything/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../java_everything/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sky-take-out/sky-server/src/main/java/com/sky/controller/user/DishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sky-take-out/sky-server/src/main/java/com/sky/controller/user/DishController.java" afterDir="false" />
     </list>
@@ -141,7 +155,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/code_github/Dream_java/java_chatroom",
+    "last_opened_file_path": "D:/code_github/Dream_java/BiTeSpringBootDemo/SpringBootDemo1",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -164,7 +178,7 @@
       <recent name="com.example.demo.config" />
     </key>
   </component>
-  <component name="RunManager" selected="Application.ArrayTest">
+  <component name="RunManager" selected="Spring Boot.DemoApplication">
     <configuration name="ArrayTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.example.demo.config.ArrayTest" />
       <module name="java_chatroom" />
@@ -344,7 +358,7 @@
       <workItem from="1701878505850" duration="26913000" />
       <workItem from="1702183660203" duration="32000" />
       <workItem from="1702186532081" duration="51000" />
-      <workItem from="1702299878242" duration="7076000" />
+      <workItem from="1702299878242" duration="17921000" />
     </task>
     <task id="LOCAL-00001" summary="网页聊天室">
       <option name="closed" value="true" />
@@ -370,7 +384,15 @@
       <option name="project" value="LOCAL" />
       <updated>1701945143418</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="网页聊天室session改为jwt">
+      <option name="closed" value="true" />
+      <created>1702467478935</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1702467478935</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -404,6 +426,11 @@
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/WebSocketController.java</url>
           <line>384</line>
           <option name="timeStamp" value="5" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/CommonController.java</url>
+          <line>34</line>
+          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -17,3 +17,9 @@ logging:
     com:
       example:
         demo: debug
+
+alioss:
+  endpoint: oss-cn-beijing.aliyuncs.com
+  access-key-id: LTAI5tRrowseRixd7JX8phzU
+  access-key-secret: rD1H9iGoGXZIm65w9YDRbcl9Bqoeci
+  bucket-name: quwuyou-1
