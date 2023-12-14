@@ -7,5 +7,9 @@ import lombok.Data;
 public class Friend {
     private int friendId;
     private String friendName;
+    private String friendNickname;
+    private String friendAvatar;
+    private String friendSignature;
+    private String friendSex;
 
 }

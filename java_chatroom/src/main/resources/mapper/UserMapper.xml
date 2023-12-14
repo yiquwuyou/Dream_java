@@ -5,11 +5,31 @@
 <!--    useGeneratedKeys="true" 意思是插入的同时要获取插入结果的自增主键-->
 <!--    keyProperty="userId" 表示获取到自增主键后，将其赋值为 userId 这个属性-->
     <insert id="insert" useGeneratedKeys="true" keyProperty="userId">
-        insert into user values(null, #{username}, #{password})
+        insert into user values(null, #{username}, #{password},#{nickname},#{avatarPath},#{signature},#{sex})
     </insert>
+    <!--    <insert id="insert" useGeneratedKeys="true" keyProperty="userId">-->
+<!--        INSERT INTO user VALUES (null, #{username}, #{password},-->
+<!--                                 COALESCE(#{nickname}, ''),-->
+<!--                                 COALESCE(#{avatarPath}, 'https://th.bing.com/th/id/OIP.4or4IzOy3o9ZM2QaX7huXQAAAA?w=211&h=211&c=7&r=0&o=5&pid=1.7'),-->
+<!--                                 COALESCE(#{signature}, ''),-->
+<!--                                 COALESCE(#{sex}, '草履虫')-->
+<!--                                )-->
+<!--    </insert>-->
 
-<!--    resultType 是返回值类型所在的路径，不是mapper所在的路径！ 此处 selectByName 的返回值类型是User -->
+
+    <!--    resultType 是返回值类型所在的路径，不是mapper所在的路径！ 此处 selectByName 的返回值类型是User -->
     <select id="selectByName" resultType="com.example.demo.model.User">
         select * from user where username = #{username}
     </select>
+
+    <update id="updateUser">
+        update user
+        <set>
+            <if test="nickname != null">nickname = #{nickname},</if>
+            <if test="avatarPath != null">avatarPath = #{avatarPath},</if>
+            <if test="signature != null">signature = #{signature},</if>
+            <if test="sex != null">sex = #{sex}</if>
+        where username = #{username}
+        </set>
+    </update>
 </mapper>

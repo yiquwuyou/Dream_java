@@ -26,7 +26,7 @@ public class UserController {
 
     // 操作数据库，创建 mapper实例
     @Resource
-    UserMapper userMapper;
+    private UserMapper userMapper;
 
     @ApiOperation(value = "登录")
     @PostMapping("/login")
@@ -37,13 +37,18 @@ public class UserController {
         User user =userMapper.selectByName(username);
         if (user == null || !user.getPassword().equals(password)) {
             // 这俩条件具备一个，就是登录失败！！同时返回一个空的对象即可
-            System.out.println("登陆失败！用户名或者密码错误！" + user);
+            log.info("登陆失败！用户名或者密码错误！" + user);
             return new User();
         }
         Map<String, String> map = new HashMap<>();
         map.put("userId", String.valueOf(user.getUserId()));
         map.put("username", user.getUsername());
-        String token = JwtUtil.getToken(map);
+        Map<String, String> mapJWT = new HashMap<>(map);
+        String token = JwtUtil.getToken(mapJWT);
+        map.put("nickname", user.getNickname());
+        map.put("avatarPath", user.getAvatarPath());
+        map.put("signature", user.getSignature());
+        map.put("sex", user.getSex());
         map.put("token", token);
         log.info("用户已登录：" + map);
         return map;
@@ -76,9 +81,21 @@ public class UserController {
     @ApiOperation(value = "获取登录用户的信息")
     public Object getUserInfo(HttpServletRequest request) {
         // 从 token 中获取用户信息
-        User user = new User();
-        user.setUserId(UserJwt.getUserId());
-        user.setUsername(UserJwt.getUsername());
+        User user =userMapper.selectByName(UserJwt.getUsername());
+
         return user;
     }
+
+    @RequestMapping("/updateUser")
+    @ResponseBody
+    public Object updateUser(User user){
+        if(UserJwt.getUserId() != user.getUserId()){
+            log.info("用户id不匹配，无法更新用户信息");
+            return null;
+        }
+        int ret = userMapper.updateUser(user);
+        log.info("更新用户信息 ret：" + ret);
+        return ret;
+    }
+
 }

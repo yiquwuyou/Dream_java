@@ -15,6 +15,13 @@ public class MessageResponse {
     private String fromName;
     private Integer toId;
     private String toName;
+    // 下面是加好友操作特有的数据
+    private String fromNickname;
+    private String fromAvatar;
+    private String toNickname;
+    private String toAvatar;
+    // 发送加好友时的请求信息，比如 “你好呀！我是...”
+    private String requestMessage;
     private Integer isAgree;
 
 }

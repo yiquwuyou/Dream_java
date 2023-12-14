@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f61434b4-8e40-459e-9c29-59fcba96f335" name="Changes" comment="网页聊天室session改为jwt">
+    <list default="true" id="f61434b4-8e40-459e-9c29-59fcba96f335" name="Changes" comment="小改动，然后增加了上传图片，但还没有用到头像上">
       <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/config/WebConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/constant/Constants.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/enums/ResultCode.java" afterDir="false" />
@@ -18,14 +18,16 @@
       <change afterPath="$PROJECT_DIR$/../Suanfa/JianZhiOffer/JianZhiOffer/JZ24.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Suanfa/JianZhiOffer/JianZhiOffer/JZ6.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Suanfa/JianZhiOffer/JianZhiOffer/JianZhiOffer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/AliOssProperties.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/AliOssUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/OssConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CommonController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/CommonController.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/AliOssProperties.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/AliOssUtil.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/OssConfiguration.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/java_chatroom-0.0.1-SNAPSHOT.jar" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/java_chatroom-0.0.1-SNAPSHOT.jar.original" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-archiver/pom.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/createdFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/testCompile/default-testCompile/inputFiles.lst" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/TEST-com.example.demo.DemoApplicationTests.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/surefire-reports/com.example.demo.DemoApplicationTests.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/demo/DemoApplicationTests.class" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../java_everything/.idea/java_everything.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../java_everything/.idea/modules.xml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mq/src/main/java/com/example/mq/common/BinaryTool.java" afterDir="false" />
@@ -86,16 +88,40 @@
       <change beforePath="$PROJECT_DIR$/../HospitalManagerApi - idea/src/main/resources/mybatis/DoctorMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../HospitalManagerApi - idea/src/main/resources/mybatis/DoctorMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../MessageWall/MessageWall" beforeDir="false" afterPath="$PROJECT_DIR$/../MessageWall/MessageWall" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/InterceptorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/InterceptorConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/JwtInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/JwtInterceptor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/WebMvcConfiguration.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/WebMvcConfiguration.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MessageRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MessageRequest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MessageResponse.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/MessageResponse.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/WebSocketController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/WebSocketController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/FriendMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/FriendMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/UserMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/mapper/UserMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/AddFriend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/AddFriend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Friend.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Friend.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Message.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Message.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/UserJwt.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/UserJwt.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/service/FriendService.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/service/FriendService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/db.sql" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/db.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/FriendMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/FriendMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MessageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MessageMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/MessageSessionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/MessageSessionMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/mapper/UserMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/MessageResponse.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/MessageResponse.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/UserController.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/WebSocketController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/WebSocketController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/InterceptorConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/InterceptorConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/JwtInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/JwtInterceptor.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/WebMvcConfiguration.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/WebMvcConfiguration.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/demo/DemoApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/FriendMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/FriendMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/UserMapper.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/mapper/UserMapper.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/AddFriend.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/AddFriend.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/Friend.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/Friend.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/Message.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/Message.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/UserJwt.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/UserJwt.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/service/FriendService.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/service/FriendService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/FriendMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/FriendMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/MessageMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/MessageMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/MessageSessionMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/MessageSessionMapper.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/mapper/UserMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../java_everything/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../java_everything/.idea/misc.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sky-take-out/sky-server/src/main/java/com/sky/controller/user/DishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sky-take-out/sky-server/src/main/java/com/sky/controller/user/DishController.java" afterDir="false" />
     </list>
@@ -155,7 +181,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "D:/code_github/Dream_java/BiTeSpringBootDemo/SpringBootDemo1",
+    "last_opened_file_path": "D:/code_github/Dream_java/java_chatroom",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -358,7 +384,9 @@
       <workItem from="1701878505850" duration="26913000" />
       <workItem from="1702183660203" duration="32000" />
       <workItem from="1702186532081" duration="51000" />
-      <workItem from="1702299878242" duration="17921000" />
+      <workItem from="1702299878242" duration="18523000" />
+      <workItem from="1702515684446" duration="10251000" />
+      <workItem from="1702536049075" duration="13576000" />
     </task>
     <task id="LOCAL-00001" summary="网页聊天室">
       <option name="closed" value="true" />
@@ -392,7 +420,15 @@
       <option name="project" value="LOCAL" />
       <updated>1702467478935</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="小改动，然后增加了上传图片，但还没有用到头像上">
+      <option name="closed" value="true" />
+      <created>1702482922048</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1702482922048</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -412,25 +448,21 @@
   <component name="VcsManagerConfiguration">
     <MESSAGE value="网页聊天室" />
     <MESSAGE value="网页聊天室session改为jwt" />
-    <option name="LAST_COMMIT_MESSAGE" value="网页聊天室session改为jwt" />
+    <MESSAGE value="小改动，然后增加了上传图片，但还没有用到头像上" />
+    <option name="LAST_COMMIT_MESSAGE" value="小改动，然后增加了上传图片，但还没有用到头像上" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/WebSocketController.java</url>
-          <line>380</line>
+          <line>421</line>
           <option name="timeStamp" value="3" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/WebSocketController.java</url>
-          <line>384</line>
+          <line>425</line>
           <option name="timeStamp" value="5" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/com/example/demo/controller/CommonController.java</url>
-          <line>34</line>
-          <option name="timeStamp" value="6" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

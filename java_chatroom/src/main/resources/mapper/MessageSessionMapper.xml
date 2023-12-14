@@ -11,7 +11,8 @@
     </select>
 
     <select id="getFriendsBySessionId" resultType="com.example.demo.model.Friend">
-        select userId as friendId, username as friendName from user
+        select userId as friendId, username as friendName , nickname as friendNickname, avatarPath as friendAvatar
+        from user
         where userId in
         (select userId from message_session_user where sessionId = #{sessionId} and userId != #{selfUserId})
     </select>

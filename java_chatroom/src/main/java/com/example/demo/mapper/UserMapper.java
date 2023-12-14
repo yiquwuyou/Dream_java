@@ -3,6 +3,7 @@ package com.example.demo.mapper;
 import com.example.demo.model.User;
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.Update;
 
 @Mapper
 public interface UserMapper {
@@ -16,4 +17,5 @@ public interface UserMapper {
     @Select("select userId from user where username = #{username}")
     Integer selectIdByUserName(String username);
 
+    Integer updateUser(User user);
 }

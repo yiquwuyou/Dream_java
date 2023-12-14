@@ -9,7 +9,7 @@ import lombok.Data;
 public class MessageRequest {
     private String type = "message";
     private int sessionId;
-    private String content;
+    private String content; // 发送加好友请求时，这个就当作加好友的验证信息
     private int userId;
     private String username;
     private String toUsername;

@@ -5,7 +5,13 @@
     <!--    resultType 是返回值类型所在的路径，不是mapper所在的路径！ 此处 selectByName 的返回值类型是User -->
     <select id="selectFriendList" resultType="com.example.demo.model.Friend">
 <!--        用到了子查询-->
-        select userId as friendId, username as friendName from user
+        select userId as friendId,
+               username as friendName,
+               nickname as friendNickname,
+               avatarPath as friendAvatar,
+               signature as friendSignature,
+               sex as friendSex
+        from user
         where userId in
         (select friendId from friend where userId = #{userId})
     </select>

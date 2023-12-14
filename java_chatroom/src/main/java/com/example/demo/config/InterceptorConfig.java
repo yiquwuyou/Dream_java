@@ -58,6 +58,7 @@ public class InterceptorConfig  extends WebMvcConfigurationSupport {
                 // 指定了不需要拦截的请求路径。在这个例子中，请求路径为 "/patient/pdf" 的请求不会被拦截
                 // 指定了不需要拦截的请求路径。它使用通配符 "**" 匹配任意目录，所以所有以 "/login" 结尾的路径都不会被拦截
                 .excludePathPatterns("/login")
+                .excludePathPatterns("/register")
                 .excludePathPatterns(excludePath)
                 .excludePathPatterns("/WebSocketMessage");
     }

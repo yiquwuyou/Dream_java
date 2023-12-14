@@ -29,8 +29,8 @@ public class FriendService {
         friendMapper.addFriend(addFriend);
     }
 
-    public void updateAgreeFriend(AddFriend addFriend){
-        friendMapper.updateAgreeFriend(addFriend);
+    public void updateAgreeFriend(Integer isAgree, Integer fromId, Integer toId){
+        friendMapper.updateAgreeFriend(isAgree,fromId,toId);
     }
 
     public void insertfriend(int userId, int friendId){

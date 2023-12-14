@@ -9,7 +9,7 @@
     </select>
 
     <select id="getMessagesBySessionId" resultType="com.example.demo.model.Message">
-        select messageId, fromId, username as fromName, sessionId, content
+        select messageId, fromId, username as fromName, nickname as fromNickname, avatarPath as fromAvatar, sessionId, content
         from user, message
         where user.userId = message.fromId and message.sessionId = #{sessionId}
         order by postTime desc limit 100

@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.example.demo.component.OnlineUserManager;
 import com.example.demo.mapper.MessageMapper;
 import com.example.demo.mapper.MessageSessionMapper;
+import com.example.demo.mapper.UserMapper;
 import com.example.demo.model.*;
 import com.example.demo.service.FriendService;
 import com.example.demo.service.UserService;
@@ -40,6 +41,9 @@ public class WebSocketController extends TextWebSocketHandler {
     private UserService userService;
 
     @Autowired
+    private UserMapper userMapper;
+
+    @Autowired
     private FriendService friendService;
 
     // String 自带的，所以不需要注入
@@ -63,14 +67,12 @@ public class WebSocketController extends TextWebSocketHandler {
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        System.out.println("[ WebSocketController] 收到消息！" + message.toString());
+        log.info("[ WebSocketController] 收到消息！" + message.toString());
         // 1、先获取到当前用户的信息，后续要进行消息转发啥的
         // 从 token 中获取用户信息
-        User user = new User();
-        user.setUserId(UserJwt.getUserId());
-        user.setUsername(UserJwt.getUsername());
+        User user =userMapper.selectByName(UserJwt.getUsername());
         if (user == null) {
-            System.out.println("[WebSocketAPI] user == null! 未登录用户，无法进行消息转发");
+            log.info("[WebSocketAPI] user == null! 未登录用户，无法进行消息转发");
             return;
         }
         // 2、针对请求进行解析，把 json 格式的字符串，转成一个 java 中的对象
@@ -110,15 +112,31 @@ public class WebSocketController extends TextWebSocketHandler {
         response.setToName(request.getToUsername());
         response.setIsAgree(1);
         response.setToId(userService.selectIdByUserName(request.getToUsername()));
+        // // 将二者的头像等往里装
+        response.setFromNickname(fromUser.getNickname());
+        response.setFromAvatar(fromUser.getAvatarPath());
+        User toUser = userMapper.selectByName(response.getToName());
+        response.setToNickname(toUser.getNickname());
+        response.setToAvatar(toUser.getAvatarPath());
+        response.setRequestMessage(request.getContent());
         // 把这个 java 对象转成 json 格式字符串
         String responseJson = objectMapper.writeValueAsString(response);
         log.info("[transferMessage] responseJson:" + responseJson);
+        // todo： 这段代码后续前后端验证正确后可将下面的删除
         // 修改add_friend中的数据
-        AddFriend addFriend = new AddFriend();
-        BeanUtils.copyProperties(response, addFriend);
-        friendService.updateAgreeFriend(addFriend);
+//        AddFriend addFriend = new AddFriend();
+//        BeanUtils.copyProperties(response, addFriend);
+//        // 将二者的头像等往里装
+//        addFriend.setFromNickname(fromUser.getNickname());
+//        addFriend.setFromAvatar(fromUser.getAvatarPath());
+//        addFriend.setToNickname(toUser.getNickname());
+//        addFriend.setToAvatar(toUser.getAvatarPath());
+//        addFriend.setRequestMessage(request.getContent());
+
+        // 修改 add_friend 表中的数据  isAgree = 1
+        friendService.updateAgreeFriend(response.getIsAgree(), response.getFromId(), response.getToId());
         // 添加friend表中的数据
-        friendService.insertfriend(addFriend.getFromId(), addFriend.getToId());
+        friendService.insertfriend(response.getFromId(), response.getToId());
         // 转发
         WebSocketSession webSocketSession1 = onlineUserManager.getSession(response.getFromId());
         WebSocketSession webSocketSession2 = onlineUserManager.getSession(response.getToId());
@@ -143,9 +161,18 @@ public class WebSocketController extends TextWebSocketHandler {
         response.setToName(request.getToUsername());
         response.setIsAgree(0);
         response.setToId(userService.selectIdByUserName(request.getToUsername()));
+        // // 将二者的头像等往里装
+        response.setFromNickname(fromUser.getNickname());
+        response.setFromAvatar(fromUser.getAvatarPath());
+        User toUser = userMapper.selectByName(response.getToName());
+        response.setToNickname(toUser.getNickname());
+        response.setToAvatar(toUser.getAvatarPath());
+        response.setRequestMessage(request.getContent());
         // 把这个 java 对象转成 json 格式字符串
         String responseJson = objectMapper.writeValueAsString(response);
         log.info("[transferMessage] responseJson:" + responseJson);
+        // 修改 add_friend 表中的数据 isAgree = 0
+        friendService.updateAgreeFriend(response.getIsAgree(), response.getFromId(), response.getToId());
         // 转发
         WebSocketSession webSocketSession1 = onlineUserManager.getSession(response.getFromId());
         WebSocketSession webSocketSession2 = onlineUserManager.getSession(response.getToId());
@@ -168,12 +195,26 @@ public class WebSocketController extends TextWebSocketHandler {
         response.setToName(request.getToUsername());
         response.setIsAgree(2);
         response.setToId(userService.selectIdByUserName(request.getToUsername()));
+        // // 将二者的头像等往里装
+        response.setFromNickname(fromUser.getNickname());
+        response.setFromAvatar(fromUser.getAvatarPath());
+        User toUser = userMapper.selectByName(response.getToName());
+        response.setToNickname(toUser.getNickname());
+        response.setToAvatar(toUser.getAvatarPath());
+        response.setRequestMessage(request.getContent());
         // 把这个 java 对象转成 json 格式字符串
         String responseJson = objectMapper.writeValueAsString(response);
         log.info("[transferMessage] responseJson:" + responseJson);
         // 存储
         AddFriend addFriend = new AddFriend();
         BeanUtils.copyProperties(response, addFriend);
+        // 将二者的头像等往里装
+        addFriend.setFromNickname(fromUser.getNickname());
+        addFriend.setFromAvatar(fromUser.getAvatarPath());
+        addFriend.setToNickname(toUser.getNickname());
+        addFriend.setToAvatar(toUser.getAvatarPath());
+        addFriend.setRequestMessage(request.getContent());
+        // 往 add_friend 表中插入一条数据
         friendService.addFriendAn(addFriend);
         // 转发
         WebSocketSession webSocketSession1 = onlineUserManager.getSession(response.getFromId());
@@ -199,7 +240,7 @@ public class WebSocketController extends TextWebSocketHandler {
         response.setContent(request.getContent());
         // 把这个 java 对象转成 json 格式字符串
         String responseJson = objectMapper.writeValueAsString(response);
-        System.out.println("[transferMessage] responseJson:" + responseJson);
+        log.info("[transferMessage] responseJson:" + responseJson);
         // 2、根据请求中的 sessionId，获取到这个 MessageSession 里都有哪些用户，通过查询数据库就知道了
         List<Friend> friends = messageSessionMapper.getFriendsBySessionId(request.getSessionId(), fromUser.getUserId());
         // 此处注意！！！上述数据库查询，会把当前发消息的用户给排除掉，而最终转发的时候，则需要也把发送消息的人也发一次
