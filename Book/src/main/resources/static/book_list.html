@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>图书列表展示</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+
+    <link rel="stylesheet" href="css/list.css">
+    <script type="text/javascript" src="js/jquery.min.js"></script>
+    <script type="text/javascript" src="js/bootstrap.min.js"></script>
+    <script src="js/jq-paginator.js"></script>
+
+</head>
+
+<body>
+<div class="bookContainer">
+    <h2>图书列表展示</h2>
+    <div class="navbar-justify-between">
+        <div class="buttons">
+            <button class="btn btn-outline-info" type="button" onclick="location.href='book_add.html'">添加图书</button>
+            <button class="btn btn-outline-info" type="button" onclick="batchDelete()">批量删除</button>
+        </div>
+        <div class="search">
+            <!-- 创建一个下拉菜单，让用户选择查找元素的类型 -->
+            <select id="searchType" class="form-select">
+                <option selected>请输入查找元素</option>
+                <option value="1">ISBN号</option>
+                <option value="2">图书名</option>
+                <option value="3">作者</option>
+                <option value="4">出版社</option>
+                <option value="5">Id</option>
+            </select>
+            <!-- 创建一个输入框，让用户输入搜索关键词 -->
+            <input type="text" id="searchInput" placeholder="搜索">
+            <!-- 创建一个按钮，让用户点击查询 -->
+            <button id="searchButton" onclick="Search()">查询</button>
+        </div>
+    </div>
+
+    <table>
+        <thead>
+        <tr>
+            <td>选择</td>
+            <td class="width100 zoom" style="cursor: pointer">图书ID</td>
+            <td>书名</td>
+            <td>作者</td>
+            <td>数量</td>
+            <td>定价</td>
+            <td>出版社</td>
+            <td>状态</td>
+            <td class="width300 zoom" style="cursor: pointer">ISBN</td>
+            <td class="width200">操作</td>
+        </tr>
+        </thead>
+        <tbody>
+
+        </tbody>
+    </table>
+
+    <div class="demo">
+        <ul id="pageContainer" class="pagination justify-content-center"></ul>
+    </div>
+    <script>
+        getBookList();
+        function getBookList() {
+            $.ajax({
+                type: "get",
+                url: "/book/getBookListByPage" + location.search,
+                success: function (result) {
+                    //真实的前端处理逻辑, 要比咱们代码复杂
+                    if(result.code=="UNLOGIN"){
+                        location.href = "login.html";
+                        return;
+                    }
+
+                    var finalHtml = "";
+                    //加载列表
+                    var pageResult = result.data;
+                    for (var book of pageResult.records) {
+                        //根据每一条记录去拼接html, 也就是一个tr
+                        finalHtml += '<tr>';
+                        finalHtml += '<td><input type="checkbox" name="selectBook" value="' + book.id + '" id="selectBook" class="book-select"></td>';
+                        finalHtml += '<td>' + book.id + '</td>';
+                        finalHtml += '<td>' + book.bookName + '</td>';
+                        finalHtml += '<td>' + book.author + '</td>';
+                        finalHtml += '<td>' + book.count + '</td>';
+                        finalHtml += '<td>' + book.price + '</td>';
+                        finalHtml += '<td>' + book.publish + '</td>';
+                        finalHtml += '<td>' + book.statusCN + '</td>';
+                        finalHtml += '<td>' + book.isbn + '</td>';
+                        finalHtml += '<td><div class="op">';
+                        // finalHtml += '<a href="book_update.html?bookId=' + book.id + '">修改</a>';
+                        // finalHtml += '<a href="javascript:void(0)" onclick="deleteBook(' + book.id + ')">删除</a>';
+                        // finalHtml += '<a href="javascript:void(0)" onclick="buyBook(' + book.id + ',' + book.count +')">购买</a>';
+                        finalHtml += '<a href="book_update.html?bookId=' + book.id + '" style="display: inline-block;">修改</a>';
+                        finalHtml += '<a href="javascript:void(0)" onclick="deleteBook(' + book.id + ')" style="display: inline-block;">删除</a>';
+                        finalHtml += '<a href="javascript:void(0)" onclick="buyBook(' + book.id + ',' + book.count +')" style="display: inline-block;">购买</a>';
+
+                        finalHtml += '</div></td></tr>';
+                    }
+
+                    $("tbody").html(finalHtml);
+
+                    //翻页信息
+                    $("#pageContainer").jqPaginator({
+                        totalCounts: pageResult.total, //总记录数
+                        pageSize: 10,    //每页的个数
+                        visiblePages: 5, //可视页数
+                        currentPage: pageResult.pageRequest.currentPage,  //当前页码
+                        first: '<li class="page-item"><a class="page-link">首页</a></li>',
+                        prev: '<li class="page-item"><a class="page-link" href="javascript:void(0);">上一页<\/a><\/li>',
+                        next: '<li class="page-item"><a class="page-link" href="javascript:void(0);">下一页<\/a><\/li>',
+                        last: '<li class="page-item"><a class="page-link" href="javascript:void(0);">最后一页<\/a><\/li>',
+                        page: '<li class="page-item"><a class="page-link" href="javascript:void(0);">{{page}}<\/a><\/li>',
+                        //页面初始化和页码点击时都会执行
+                        onPageChange: function (page, type) {
+                            console.log("第" + page + "页, 类型:" + type);
+                            if (type == "change") {
+                                location.href = "book_list.html?currentPage=" + page;
+                            }
+
+                        }
+                    });
+
+                }
+            });
+        }
+
+
+        function deleteBook(bookId) {
+            var isDelete = confirm("确认删除?");
+            if (isDelete) {
+                //删除图书
+                $.ajax({
+                    type:"post",
+                    url:"/book/updateBook",
+                    data:{
+                        id: bookId,
+                        status: 0
+                    },
+                    success:function(result){
+                        if(result==""){
+                            //删除成功
+                            location.href = "book_list.html";
+                        }else{
+                            alert(result);
+                        }
+                    }
+                });
+
+            }
+        }
+        function buyBook() {
+            let isbn = prompt("请输入图书的ISBN号:");
+            let count = prompt("请输入购买数量：");
+            isbn = Number(isbn);
+            count = Number(count);
+            console.log(isbn)
+            console.log(count)
+            if (!isbn || !count || isNaN(isbn) || isNaN(count) || isbn <= 0 || count <= 0) {
+                alert("请输入合法的图书ID和购买数量！");
+                return;
+            }
+
+            $.ajax({
+                type: "post",
+                url: "/book/buyBook",
+                data: {
+                    ISBN: isbn,
+                    bookCount: count,
+                },
+                dataType:"json",
+                success: function (resp) {
+                    console.log(resp)
+                    if (resp.code == 'SUCCESS'){
+                        console.log(resp)
+                        alert("购买成功");
+                        location.href = "book_list.html";
+                    } else{
+                        alert(resp.errMsg);
+                    }
+                },
+                error:function (resp) {
+                    alert("请检查输入信息！！！");
+                }
+            });
+        }
+
+
+
+        function batchDelete() {
+            var isDelete = confirm("确认批量删除?");
+            if (isDelete) {
+                //获取复选框的id
+                var ids = [];
+                $("input:checkbox[name='selectBook']:checked").each(function () {
+                    ids.push($(this).val());
+                });
+                console.log(ids);
+
+                $.ajax({
+                    type:"post",
+                    url: "/book/batchDelete?ids="+ids,
+                    success:function(result){
+                        if(result==""){
+                            //删除成功
+                            location.href = "book_list.html";
+                        }else{
+                            alert(result);
+                        }
+                    }
+                });
+
+            }
+        }
+        function Search() {
+            // 获取用户选择的查找元素的类型
+            let searchType = document.getElementById("searchType").value;
+            // 获取用户输入的搜索关键词
+            let searchInput = document.getElementById("searchInput").value;
+            // 根据不同的类型，调用不同的函数来查询
+            switch (searchType) {
+                case "1":
+                    // 如果用户选择了ISBN号，调用getBookByISBN函数
+                    getBookByISBN(searchInput);
+                    break;
+                case "2":
+                    // 如果用户选择了图书名，调用getBookByName函数
+                    getBookByName(searchInput);
+                    break;
+                case "3":
+                    // 如果用户选择了作者，调用getBookByAuthor函数
+                    getBookByAuthor(searchInput);
+                    break;
+                case "4":
+                    // 如果用户选择了出版社，调用getBookByPublisher函数
+                    getBookByPublisher(searchInput);
+                    break;
+                case "5":
+                    // 如果用户选择了Id，调用getBookById函数
+                    getBookById(searchInput);
+                    break;
+                default:
+                    // 如果用户没有选择任何类型，提示用户选择一个类型
+                    alert("请选择一个查找元素");
+            }
+        }
+
+        //根据ISBN查询图书
+        function getBookByISBN() {
+            // 获取用户输入的ISBN号
+            const isbn = $("#searchInput").val();
+            $.ajax({
+                type: "get",
+                url: "/book/queryBookInfoByISBN",
+                data: { ISBN: isbn }, // 将选定的值作为参数发送请求
+                dataType: "json", // 指定期望从服务器返回的数据类型为json
+                success: function (result) {
+                    console.log("ISBN")
+                    console.log(result.data)
+                    // 其他代码省略
+                    // 定义一个变量，用于存储拼接好的HTML代码
+                    let finalHtml = "";
+                    // 遍历返回的数据数组
+                    for (let i = 0; i < result.data.length; i++) {
+                        // 获取每一条记录
+                        let book = result.data[i];
+                        finalHtml += "<tr>";
+                        finalHtml +=
+                            '<td><input type="checkbox" name="selectBook" value="' +
+                            book.id +
+                            '" id="selectBook" class="book-select"></td>';
+                        finalHtml += "<td>" + book.id + "</td>";
+                        finalHtml += "<td>" + book.bookName + "</td>";
+                        finalHtml += "<td>" + book.author + "</td>";
+                        finalHtml += "<td>" + book.count + "</td>";
+                        finalHtml += "<td>" + book.price + "</td>";
+                        finalHtml += "<td>" + book.publish + "</td>";
+                        finalHtml += "<td>" + book.statusCN + "</td>";
+                        finalHtml += "<td>" + book.isbn + "</td>";
+                        finalHtml += '<td><div class="op">';
+                        finalHtml +=
+                            '<a href="book_update.html?bookId=' +
+                            book.id +
+                            '" style="display: inline-block;">修改</a>';
+                        finalHtml +=
+                            '<a href="javascript:void(0)" onclick="deleteBook(' +
+                            book.id +
+                            ')" style="display: inline-block;">删除</a>';
+                        finalHtml +=
+                            '<a href="javascript:void(0)" onclick="buyBook(' +
+                            book.id +
+                            "," +
+                            book.count +
+                            ')" style="display: inline-block;">购买</a>';
+                        finalHtml += "</div></td></tr>";
+                    }
+                    // 将拼接好的HTML代码，插入到表格的表体中
+                    $("tbody").html(finalHtml);
+                },
+            });
+        }
+
+
+        // 定义一个函数，用来发送前端的请求
+        function getBookByAuthor() {
+            // 获取用户输入的作者姓名
+            let author = $("#searchInput").val();
+            $.ajax({
+                type: "get",
+                url: "/book/queryBookInfoByAuthor",
+                data: { author: author }, // 将作者姓名作为参数发送请求
+                dataType: "json", // 指定期望从服务器返回的数据类型为json
+                success: function (result) {
+                    var finalHtml = "";
+                    //加载列表
+                    console.log("作者姓名")
+                    console.log(result)
+                    var pageResult = result.data;
+                    console.log(result.data)
+                    console.log(pageResult)
+                    for (var book of pageResult.records) {
+                        //根据每一条记录去拼接html, 也就是一个tr
+                        finalHtml += '<tr>';
+                        finalHtml += '<td><input type="checkbox" name="selectBook" value="' + book.id + '" id="selectBook" class="book-select"></td>';
+                        finalHtml += '<td>' + book.id + '</td>';
+                        finalHtml += '<td>' + book.bookName + '</td>';
+                        finalHtml += '<td>' + book.author + '</td>';
+                        finalHtml += '<td>' + book.count + '</td>';
+                        finalHtml += '<td>' + book.price + '</td>';
+                        finalHtml += '<td>' + book.publish + '</td>';
+                        finalHtml += '<td>' + book.statusCN + '</td>';
+                        finalHtml += '<td>' + book.isbn + '</td>';
+                        finalHtml += '<td><div class="op">';
+                        finalHtml += '<a href="book_update.html?bookId=' + book.id + '" style="display: inline-block;">修改</a>';
+                        finalHtml += '<a href="javascript:void(0)" onclick="deleteBook(' + book.id + ')" style="display: inline-block;">删除</a>';
+                        finalHtml += '<a href="javascript:void(0)" onclick="buyBook(' + book.id + ',' + book.count +')" style="display: inline-block;">购买</a>';
+
+                        finalHtml += '</div></td></tr>';
+                    }
+
+                    $("tbody").html(finalHtml);
+
+                    //翻页信息
+                    $("#pageContainer").jqPaginator({
+                        totalCounts: pageResult.total, //总记录数
+                        pageSize: 10,    //每页的个数
+                        visiblePages: 5, //可视页数
+                        currentPage: pageResult.pageRequest.currentPage,  //当前页码
+                        first: '<li class="page-item"><a class="page-link">首页</a></li>',
+                        prev: '<li class="page-item"><a class="page-link" href="javascript:void(0);">上一页<\/a><\/li>',
+                        next: '<li class="page-item"><a class="page-link" href="javascript:void(0);">下一页<\/a><\/li>',
+                        last: '<li class="page-item"><a class="page-link" href="javascript:void(0);">最后一页<\/a><\/li>',
+                        page: '<li class="page-item"><a class="page-link" href="javascript:void(0);">{{page}}<\/a><\/li>',
+                        //页面初始化和页码点击时都会执行
+                        onPageChange: function (page, type) {
+                            console.log("第" + page + "页, 类型:" + type);
+                            if (type == "change") {
+                                location.href = "book_list.html?currentPage=" + page;
+                            }
+
+                        }
+                    });
+                },
+            });
+        }
+
+
+        function getBookByName() {
+            // 获取用户输入的图书名字
+            let bookName = $("#searchInput").val();
+            $.ajax({
+                type: "get",
+                url: "/book/queryBookInfoByBookName",
+                data: { bookName: bookName }, // 将图书名字作为参数发送请求
+                dataType: "json", // 指定期望从服务器返回的数据类型为json
+                success: function (result) {
+                    var finalHtml = "";
+                    //加载列表
+                    var pageResult = result.data;
+                    for (var book of pageResult.records) {
+                        //根据每一条记录去拼接html, 也就是一个tr
+                        finalHtml += '<tr>';
+                        finalHtml += '<td><input type="checkbox" name="selectBook" value="' + book.id + '" id="selectBook" class="book-select"></td>';
+                        finalHtml += '<td>' + book.id + '</td>';
+                        finalHtml += '<td>' + book.bookName + '</td>';
+                        finalHtml += '<td>' + book.author + '</td>';
+                        finalHtml += '<td>' + book.count + '</td>';
+                        finalHtml += '<td>' + book.price + '</td>';
+                        finalHtml += '<td>' + book.publish + '</td>';
+                        finalHtml += '<td>' + book.statusCN + '</td>';
+                        finalHtml += '<td>' + book.isbn + '</td>';
+                        finalHtml += '<td><div class="op">';
+                        finalHtml += '<a href="book_update.html?bookId=' + book.id + '" style="display: inline-block;">修改</a>';
+                        finalHtml += '<a href="javascript:void(0)" onclick="deleteBook(' + book.id + ')" style="display: inline-block;">删除</a>';
+                        finalHtml += '<a href="javascript:void(0)" onclick="buyBook(' + book.id + ',' + book.count +')" style="display: inline-block;">购买</a>';
+
+                        finalHtml += '</div></td></tr>';
+                    }
+
+                    $("tbody").html(finalHtml);
+
+                    //翻页信息
+                    $("#pageContainer").jqPaginator({
+                        totalCounts: pageResult.total, //总记录数
+                        pageSize: 10,    //每页的个数
+                        visiblePages: 5, //可视页数
+                        currentPage: pageResult.pageRequest.currentPage,  //当前页码
+                        first: '<li class="page-item"><a class="page-link">首页</a></li>',
+                        prev: '<li class="page-item"><a class="page-link" href="javascript:void(0);">上一页<\/a><\/li>',
+                        next: '<li class="page-item"><a class="page-link" href="javascript:void(0);">下一页<\/a><\/li>',
+                        last: '<li class="page-item"><a class="page-link" href="javascript:void(0);">最后一页<\/a><\/li>',
+                        page: '<li class="page-item"><a class="page-link" href="javascript:void(0);">{{page}}<\/a><\/li>',
+                        //页面初始化和页码点击时都会执行
+                        onPageChange: function (page, type) {
+                            console.log("第" + page + "页, 类型:" + type);
+                            if (type == "change") {
+                                location.href = "book_list.html?currentPage=" + page;
+                            }
+
+                        }
+                    });
+                },
+            });
+        }
+
+        function getBookByPublisher(){
+            // 获取用户输入的图书出版社
+            let publish =  $("#searchInput").val();
+            $.ajax({
+                type:"get",
+                url: "/book/queryBookInfoByPublish", // 指定请求的URL
+                data: { publish: publish }, // 将出版社作为参数发送请求
+                dataType: "json", // 指定期望从服务器返回的数据类型为json
+                success: function (result) {
+                    var finalHtml = "";
+                    //加载列表
+                    var pageResult = result.data;
+                    for (var book of pageResult.records) {
+                        //根据每一条记录去拼接html, 也就是一个tr
+                        finalHtml += '<tr>';
+                        finalHtml += '<td><input type="checkbox" name="selectBook" value="' + book.id + '" id="selectBook" class="book-select"></td>';
+                        finalHtml += '<td>' + book.id + '</td>';
+                        finalHtml += '<td>' + book.bookName + '</td>';
+                        finalHtml += '<td>' + book.author + '</td>';
+                        finalHtml += '<td>' + book.count + '</td>';
+                        finalHtml += '<td>' + book.price + '</td>';
+                        finalHtml += '<td>' + book.publish + '</td>';
+                        finalHtml += '<td>' + book.statusCN + '</td>';
+                        finalHtml += '<td>' + book.isbn + '</td>';
+                        finalHtml += '<td><div class="op">';
+                        finalHtml += '<a href="book_update.html?bookId=' + book.id + '" style="display: inline-block;">修改</a>';
+                        finalHtml += '<a href="javascript:void(0)" onclick="deleteBook(' + book.id + ')" style="display: inline-block;">删除</a>';
+                        finalHtml += '<a href="javascript:void(0)" onclick="buyBook(' + book.id + ',' + book.count +')" style="display: inline-block;">购买</a>';
+
+
+                        finalHtml += '</div></td></tr>';
+                    }
+
+                    $("tbody").html(finalHtml);
+
+                    //翻页信息
+                    $("#pageContainer").jqPaginator({
+                        totalCounts: pageResult.total, //总记录数
+                        pageSize: 10,    //每页的个数
+                        visiblePages: 5, //可视页数
+                        currentPage: pageResult.pageRequest.currentPage,  //当前页码
+                        first: '<li class="page-item"><a class="page-link">首页</a></li>',
+                        prev: '<li class="page-item"><a class="page-link" href="javascript:void(0);">上一页<\/a><\/li>',
+                        next: '<li class="page-item"><a class="page-link" href="javascript:void(0);">下一页<\/a><\/li>',
+                        last: '<li class="page-item"><a class="page-link" href="javascript:void(0);">最后一页<\/a><\/li>',
+                        page: '<li class="page-item"><a class="page-link" href="javascript:void(0);">{{page}}<\/a><\/li>',
+                        //页面初始化和页码点击时都会执行
+                        onPageChange: function (page, type) {
+                            console.log("第" + page + "页, 类型:" + type);
+                            if (type == "change") {
+                                location.href = "book_list.html?currentPage=" + page;
+                            }
+
+                        }
+                    });
+                },
+            })
+        }
+
+        // 定义一个函数，用来发送前端的请求
+        function getBookById() {
+            // 获取用户输入的图书Id
+            let bookId = $("#searchInput").val();
+            $.ajax({
+                type: "get",
+                url: "/book/queryBookInfoById",
+                data: { bookId: bookId }, // 将id作为参数发送请求
+                success: function (result) {
+                    // 定义一个变量，用于存储拼接好的HTML代码
+                    let finalHtml = "";
+                    // 遍历返回的数据数组
+                       let book = result.data
+                        finalHtml += "<tr>";
+                        finalHtml +=
+                            '<td><input type="checkbox" name="selectBook" value="' +
+                            book.id +
+                            '" id="selectBook" class="book-select"></td>';
+                        finalHtml += "<td>" + book.id + "</td>";
+                        finalHtml += "<td>" + book.bookName + "</td>";
+                        finalHtml += "<td>" + book.author + "</td>";
+                        finalHtml += "<td>" + book.count + "</td>";
+                        finalHtml += "<td>" + book.price + "</td>";
+                        finalHtml += "<td>" + book.publish + "</td>";
+                        finalHtml += "<td>" + book.statusCN + "</td>";
+                        finalHtml += "<td>" + book.isbn + "</td>";
+                        finalHtml += '<td><div class="op">';
+                        finalHtml +=
+                            '<a href="book_update.html?bookId=' +
+                            book.id +
+                            '" style="display: inline-block;">修改</a>';
+                        finalHtml +=
+                            '<a href="javascript:void(0)" onclick="deleteBook(' +
+                            book.id +
+                            ')" style="display: inline-block;">删除</a>';
+                        finalHtml +=
+                            '<a href="javascript:void(0)" onclick="buyBook(' +
+                            book.id +
+                            "," +
+                            book.count +
+                            ')" style="display: inline-block;">购买</a>';
+                        finalHtml += "</div></td></tr>";
+
+                    // 将拼接好的HTML代码，插入到表格的表体中
+                    $("tbody").html(finalHtml);
+                },
+            });
+        }
+
+
+        //获取图书ID这个<td>元素
+        let td1 = document.querySelector(".width100");
+        //给它添加点击事件
+        td1.addEventListener("click", Sort1);
+        function Sort1() {
+            $.ajax({
+                type: "get",
+                url: "book/getBookListByPage"+ location.search,
+                success: function (result) {
+                    console.log("开始排序")
+                    var finalHtml = "";
+                    //加载列表
+                    var pageResult = result.data;
+                    for (var book of pageResult.records) {
+                        //根据每一条记录去拼接html, 也就是一个tr
+                        finalHtml += '<tr>';
+                        finalHtml += '<td><input type="checkbox" name="selectBook" value="' + book.id + '" id="selectBook" class="book-select"></td>';
+                        finalHtml += '<td>' + book.id + '</td>';
+                        finalHtml += '<td>' + book.bookName + '</td>';
+                        finalHtml += '<td>' + book.author + '</td>';
+                        finalHtml += '<td>' + book.count + '</td>';
+                        finalHtml += '<td>' + book.price + '</td>';
+                        finalHtml += '<td>' + book.publish + '</td>';
+                        finalHtml += '<td>' + book.statusCN + '</td>';
+                        finalHtml += '<td>' + book.isbn + '</td>';
+                        finalHtml += '<td><div class="op">';
+                        finalHtml += '<a href="book_update.html?bookId=' + book.id + '" style="display: inline-block;">修改</a>';
+                        finalHtml += '<a href="javascript:void(0)" onclick="deleteBook(' + book.id + ')" style="display: inline-block;">删除</a>';
+                        finalHtml += '<a href="javascript:void(0)" onclick="buyBook(' + book.id + ',' + book.count +')" style="display: inline-block;">购买</a>';
+
+                        finalHtml += '</div></td></tr>';
+                    }
+
+                    $("tbody").html(finalHtml);
+
+                    //翻页信息
+                    $("#pageContainer").jqPaginator({
+                        totalCounts: pageResult.total, //总记录数
+                        pageSize: 10,    //每页的个数
+                        visiblePages: 5, //可视页数
+                        currentPage: pageResult.pageRequest.currentPage,  //当前页码
+                        first: '<li class="page-item"><a class="page-link">首页</a></li>',
+                        prev: '<li class="page-item"><a class="page-link" href="javascript:void(0);">上一页<\/a><\/li>',
+                        next: '<li class="page-item"><a class="page-link" href="javascript:void(0);">下一页<\/a><\/li>',
+                        last: '<li class="page-item"><a class="page-link" href="javascript:void(0);">最后一页<\/a><\/li>',
+                        page: '<li class="page-item"><a class="page-link" href="javascript:void(0);">{{page}}<\/a><\/li>',
+                        //页面初始化和页码点击时都会执行
+                        onPageChange: function (page, type) {
+                            console.log("第" + page + "页, 类型:" + type);
+                            if (type == "change") {
+                                location.href = "book_list.html?currentPage=" + page;
+                            }
+
+                        }
+                    });
+                },
+            });
+        }
+
+        //获取ISBN这个<td>元素
+        let td2 = document.querySelector(".width300");
+        //给它添加点击事件
+        td2.addEventListener("click", Sort2);
+        // 定义一个函数，用来发送前端的请求
+        function Sort2() {
+            console.log("开始执行2")
+            $.ajax({
+                type: "get",
+                url: "/book/getBookListByPageByISBN"+ location.search,
+                success: function (result) {
+                    console.log(111111111111111111)
+                    console.log(result)
+                    var finalHtml = "";
+                    //加载列表
+                    var pageResult = result.data;
+                    for (var book of pageResult.records) {
+                        //根据每一条记录去拼接html, 也就是一个tr
+                        finalHtml += '<tr>';
+                        finalHtml += '<td><input type="checkbox" name="selectBook" value="' + book.id + '" id="selectBook" class="book-select"></td>';
+                        finalHtml += '<td>' + book.id + '</td>';
+                        finalHtml += '<td>' + book.bookName + '</td>';
+                        finalHtml += '<td>' + book.author + '</td>';
+                        finalHtml += '<td>' + book.count + '</td>';
+                        finalHtml += '<td>' + book.price + '</td>';
+                        finalHtml += '<td>' + book.publish + '</td>';
+                        finalHtml += '<td>' + book.statusCN + '</td>';
+                        finalHtml += '<td>' + book.isbn + '</td>';
+                        finalHtml += '<td><div class="op">';
+                        finalHtml += '<a href="book_update.html?bookId=' + book.id + '" style="display: inline-block;">修改</a>';
+                        finalHtml += '<a href="javascript:void(0)" onclick="deleteBook(' + book.id + ')" style="display: inline-block;">删除</a>';
+                        finalHtml += '<a href="javascript:void(0)" onclick="buyBook(' + book.id + ',' + book.count +')" style="display: inline-block;">购买</a>';
+
+                        finalHtml += '</div></td></tr>';
+                    }
+
+                    $("tbody").html(finalHtml);
+
+                    //翻页信息
+                    $("#pageContainer").jqPaginator({
+                        totalCounts: pageResult.total, //总记录数
+                        pageSize: 10,    //每页的个数
+                        visiblePages: 5, //可视页数
+                        currentPage: pageResult.pageRequest.currentPage,  //当前页码
+                        first: '<li class="page-item"><a class="page-link">首页</a></li>',
+                        prev: '<li class="page-item"><a class="page-link" href="javascript:void(0);">上一页<\/a><\/li>',
+                        next: '<li class="page-item"><a class="page-link" href="javascript:void(0);">下一页<\/a><\/li>',
+                        last: '<li class="page-item"><a class="page-link" href="javascript:void(0);">最后一页<\/a><\/li>',
+                        page: '<li class="page-item"><a class="page-link" href="javascript:void(0);">{{page}}<\/a><\/li>',
+                        //页面初始化和页码点击时都会执行
+                        onPageChange: function (page, type) {
+                            console.log("第" + page + "页, 类型:" + type);
+                            if (type == "change") {
+                                location.href = "book_list.html?currentPage=" + page;
+                            }
+
+                        }
+                    });
+                },
+            });
+        }
+    </script>
+</div>
+</body>
+
+</html>
