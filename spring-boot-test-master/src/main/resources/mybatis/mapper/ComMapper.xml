@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.qykqgl.qykqgl.dao.ComDao">
+
+    <!--查询各地考勤专员信息表-->
+    <select id="find_Com" parameterType="java.lang.String" resultType="java.util.Map">
+        select * from com where dy like CONCAT('%',#{ssk},'%' ) ORDER BY id DESC
+    </select>
+
+    <!--通过id查询各地考勤专员表-->
+    <select id="getComById" parameterType="java.lang.String" resultType="java.util.Map">
+        select * from com where id = #{id}
+    </select>
+    <!--新增各地考勤专员信息-->
+    <insert id="save_Com" parameterType="com.cn.qykqgl.qykqgl.entity.Com">
+        insert into Com value (uuid_short(),'',#{xm},#{dy},#{kqhdrx},#{xb})
+    </insert>
+    <!--修改各地考勤专员信息-->
+    <update id="update_Com" parameterType="com.cn.qykqgl.qykqgl.entity.Sta">
+        update Com set xm=#{xm},xb=#{xb},kqhdrx=#{kqhdrx},dy=#{dy} where id=#{id}
+    </update>
+    <!--删除各地考勤专员信息-->
+    <delete id="delete_ComById" parameterType="String">
+        delete from com where id = #{id}
+    </delete>
+
+</mapper>

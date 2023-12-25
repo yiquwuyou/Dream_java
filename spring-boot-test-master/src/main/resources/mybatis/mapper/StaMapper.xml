@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.qykqgl.qykqgl.dao.StaDao">
+    <!--查询学生表信息-->
+    <select id="find_Sta" parameterType="java.lang.String" resultType="java.util.Map">
+   select gh,xm,xb,lxdh,jrsj,zjhm,ssbm,bmbh,DATE_FORMAT(cjsj,'%Y-%c-%d %H:%i:%S') cjsj,cjyh,DATE_FORMAT(xgsj,'%Y-%c-%d %H:%i:%S') xgsj,xgyh,bz,nl  from Sta
+   where xm like CONCAT('%',#{ssk},'%' ) or zjhm like CONCAT('%',#{ssk},'%' ) ORDER BY cjsj DESC
+    </select>
+    <!--通过证件号码和姓名查询学生表-->
+    <select id="find_StaByZjhmAndXm" parameterType="java.lang.String" resultType="java.util.Map">
+   select gh,xm,xb,lxdh,jrsj,zjhm,ssbm,bmbh,DATE_FORMAT(cjsj,'%Y-%c-%d %h:%i:%s') cjsj,cjyh,DATE_FORMAT(xgsj,'%Y-%c-%d %h:%i:%s') xgsj,xgyh,bz,nl  from Sta
+   where xm like CONCAT('%',#{ssk},'%' ) or zjhm like CONCAT('%',#{ssk},'%' ) ORDER BY cjsj DESC
+    </select>
+    <!--登录-->
+    <select id="get_StaLogin" parameterType="java.lang.String" resultType="java.util.Map">
+   select gh,xm,xb,lxdh,jrsj,zjhm,ssbm,bmbh,DATE_FORMAT(cjsj,'%Y-%c-%d %h:%i:%s') cjsj,cjyh,DATE_FORMAT(xgsj,'%Y-%c-%d %h:%i:%s') xgsj,xgyh,bz,nl  from Sta
+   where xm = #{xm} and zjhm = #{zjhm}
+    </select>
+    <!--查询学生表的姓名和证件号码-->
+    <select id="getXmAndZjhm_Sta" resultType="java.util.Map">
+   select gh,xm,zjhm from Sta ORDER BY xm DESC
+    </select>
+    <!--通过证件号码查询学生表-->
+    <select id="getStaByZjhm" parameterType="java.lang.String" resultType="java.util.Map">
+   select * from Sta where zjhm = #{zjhm}
+    </select>
+    <!--通过工号查询学生表-->
+    <select id="getStaByGh" parameterType="java.lang.String" resultType="java.util.Map">
+        select * from Sta where gh = #{gh}
+    </select>
+    <!--通过所属部门查询学生表-->
+    <select id="getStaSsbm" resultType="java.util.Map">
+        select * from dep
+    </select>
+    <!--新增学生信息-->
+    <insert id="save_Sta" parameterType="com.cn.qykqgl.qykqgl.entity.Sta">
+        insert into sta value (uuid_short(),#{xm},#{xb},#{lxdh},#{jrsj,jdbcType=DATE},#{zjhm},#{ssbm},#{bmbh},now(),#{cjyh},null,'',#{bz},#{nl})
+    </insert>
+    <!--修改学生信息-->
+    <update id="update_Sta" parameterType="com.cn.qykqgl.qykqgl.entity.Sta">
+        update sta set xm=#{xm},xb=#{xb},lxdh=#{lxdh},jrsj=#{jrsj},zjhm=#{zjhm},ssbm=#{ssbm},bmbh=#{bmbh},bz=#{bz},xgsj=now(),xgyh=#{xgyh} where gh=#{gh}
+    </update>
+    <!--删除学生信息-->
+    <delete id="delete_StaByGh" parameterType="String">
+        delete from STA where gh = #{gh}
+    </delete>
+</mapper>

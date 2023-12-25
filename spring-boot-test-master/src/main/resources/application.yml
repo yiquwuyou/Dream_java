@@ -1,0 +1,25 @@
+server:
+  port: 8099
+spring:
+  mvc:
+    view:
+      prefix: qykqgl/web/jsp/
+      suffix: .jsp
+  datasource:
+    username: root
+    password: 123456
+    url: jdbc:mysql://127.0.0.1:3306/guomingyu?serverTimezone=Asia/Shanghai
+    driver-class-name: com.mysql.cj.jdbc.Driver
+mybatis:
+  config-location: classpath:mybatis/SqlSessionConfig.xml
+  mapper-locations: classpath:mybatis/mapper/*.xml
+logging:
+  level:
+    com.itheima: debug
+# PageHelper配置
+pagehelper:
+  offsetAsPageNum: true
+  rowBoundsWithCount: true
+  reasonable: true
+  returnPageInfo: true
+  params: count=countSql

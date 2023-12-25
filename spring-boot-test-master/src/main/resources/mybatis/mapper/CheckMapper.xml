@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.qykqgl.qykqgl.dao.CheckDao">
+
+    <!--查询考勤信息-->
+    <select id="find_StaAndCheck" parameterType="java.lang.String" resultType="java.util.Map">
+        select c.id,c.ryzj,s.xm,s.zjhm,s.ssbm,c.kqrq,DATE_FORMAT(c.scdk,'%Y-%c-%d %H:%i:%S') scdk,DATE_FORMAT(c.zhdk,'%Y-%c-%d %H:%i:%S') zhdk,c.zgsc,c.lb,c.bz from `check` c,sta s where c.ryzj = s.gh and c.kqrq like CONCAT('%',#{ssk},'%' ) ORDER BY c.scdk DESC
+    </select>
+
+    <!--通过id查询考勤信息-->
+    <select id="getCheckById" parameterType="java.lang.String" resultType="java.util.Map">
+        select c.id,c.ryzj,s.xm,s.zjhm,s.ssbm,c.kqrq,DATE_FORMAT(c.scdk,'%Y-%c-%d %H:%i:%S') scdk,DATE_FORMAT(c.zhdk,'%Y-%c-%d %H:%i:%S') zhdk,c.zgsc,c.lb,c.bz from `check` c,sta s where c.ryzj = s.gh and c.id = #{id}
+    </select>
+
+    <!--新增考勤信息-->
+    <insert id="save_Check" parameterType="com.cn.qykqgl.qykqgl.entity.Check">
+        insert into `check` value (uuid_short(),#{ryzj},#{scdk},#{zhdk},#{lb},'1',#{bz},0,#{zgsc},#{kqrq,jdbcType=DATE})
+    </insert>
+    <!--修改考勤信息-->
+    <update id="update_Check" parameterType="com.cn.qykqgl.qykqgl.entity.Check">
+        update `check` set ryzj=#{ryzj},scdk=#{scdk},zhdk=#{zhdk},lb=#{lb},bz=#{bz},kqrq=#{kqrq,jdbcType=DATE},zgsc=#{zgsc} where id=#{id}
+    </update>
+    <!--删除-->
+    <delete id="delete_CheckById" parameterType="com.cn.qykqgl.qykqgl.entity.Check">
+        delete From `check` where id = #{id}
+    </delete>
+
+    <!--新增手动打卡考勤信息-->
+    <insert id="add_ChackByScdk" parameterType="com.cn.qykqgl.qykqgl.entity.Check">
+        insert into `check` value (uuid_short(),#{ryzj},#{scdk},null,'手动打卡','1','',0,'',date_format(now(),'%Y-%m-%d'))
+    </insert>
+
+    <!--修改手动打卡考勤信息-->
+    <update id="update_ChackByXbdk" parameterType="com.cn.qykqgl.qykqgl.entity.Check">
+        update `check` set zhdk=#{zhdk},bz='打卡正常',zgsc=#{zgsc} where ryzj=#{ryzj} and scdk = #{scdk}
+    </update>
+
+
+</mapper>

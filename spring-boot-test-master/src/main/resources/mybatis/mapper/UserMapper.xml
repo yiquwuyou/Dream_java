@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.qykqgl.qykqgl.dao.UserDao">
+    <!--登录判断-->
+    <select id="getLogin" parameterType="java.lang.String" resultType="java.util.Map">
+   select * from user where username = #{username} and password = #{password}
+    </select>
+    <!--查询密码是否存在-->
+    <select id="get_UserPasswordById" parameterType="java.lang.String" resultType="java.util.Map">
+   select * from user where password = #{password} and id = #{id}
+    </select>
+    <!--修改密码-->
+    <update id="Update_UserPassword" parameterType="com.cn.qykqgl.qykqgl.entity.User">
+        update USER set password = #{password} where id  = #{id}
+    </update>
+    <!--通过id查询用户表-->
+    <select id="get_UserById" parameterType="java.lang.String" resultType="java.util.Map">
+   select * from user where id = #{id}
+    </select>
+    <!--通过证件号码查询用户表-->
+    <select id="get_UserByZjhm" parameterType="java.lang.String" resultType="java.lang.Integer">
+   select count(1) from user where zjhm = #{zjhm}
+    </select>
+
+    <!--通过证件号码和id查询用户表-->
+    <select id="get_IdByZjhm" parameterType="java.lang.String" resultType="java.lang.Integer">
+   select count(1) from user where zjhm = #{zjhm} and id = #{id}
+    </select>
+    <!--修改用户表-->
+    <update id="Update_User" parameterType="com.cn.qykqgl.qykqgl.entity.User" >
+        update USER set name = #{name},zjhm = #{zjhm},lxdh=#{lxdh} where id  = #{id}
+    </update>
+    <!--查询用户表所有信息-->
+    <select id="find_User" parameterType="java.lang.String" resultType="java.util.Map">
+   select * from user where username like CONCAT('%',#{ssk},'%' ) or name like CONCAT('%',#{ssk},'%' ) ORDER BY id DESC
+    </select>
+    <!--通过账号查询用户表-->
+    <select id="getUserByUserName" parameterType="java.lang.String" resultType="java.lang.Integer">
+   select count(1) from user where username = #{username}
+    </select>
+    <!--添加用户表-->
+    <insert id="add_User" parameterType="com.cn.qykqgl.qykqgl.entity.User">
+        insert into user value (uuid_short(),#{name},#{password},'管理部',#{zjhm},#{username},'50',#{lxdh})
+    </insert>
+    <!--删除用户表-->
+    <delete id="delete_UserById" parameterType="com.cn.qykqgl.qykqgl.entity.User">
+        delete from user where id = #{id}
+    </delete>
+</mapper>

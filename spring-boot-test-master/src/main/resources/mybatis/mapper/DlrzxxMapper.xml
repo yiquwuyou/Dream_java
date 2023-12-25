@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.cn.qykqgl.qykqgl.dao.DlrzxxDao">
+
+    <!--新增操作日志信息-->
+    <insert id="add_Dlrzxx" parameterType="java.lang.String">
+        insert into Dlrzxx value (uuid_short(),now(),#{name})
+    </insert>
+    <!--查询操作日志信息-->
+    <select id="find_Dlrzxx" parameterType="java.lang.String" resultType="java.util.Map">
+        select id,DATE_FORMAT(dlsj,'%Y-%c-%d %H:%i:%S') dlsj,dlyh from dlrzxx where dlsj like CONCAT('%',#{ssk},'%' ) ORDER BY dlsj DESC
+    </select>
+    <!--删除30天前的操作日志信息-->
+    <delete id="delete_Dlrzxx">
+        delete From dlrzxx where DATE(czsj) <![CDATA[ <= ]]> DATE(DATE_SUB(NOW(),INTERVAL 30 day))
+    </delete>
+
+
+</mapper>
