@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import com.example.demo.common.WebsocketException;
 import com.example.demo.component.OnlineUserManager;
 import com.example.demo.mapper.MessageMapper;
 import com.example.demo.mapper.MessageSessionMapper;
@@ -273,9 +274,9 @@ public class WebSocketController extends TextWebSocketHandler {
         messageMapper.add(message);
     }
 
+    // 连接异常 - 关闭
     @Override
     public void handleTransportError(WebSocketSession session, Throwable exception) throws Exception {
-        System.out.println("[ WebSocketController] 连接异常！" + exception.toString());
 
         // 从 token 中获取用户信息
         User user = new User();
@@ -285,6 +286,8 @@ public class WebSocketController extends TextWebSocketHandler {
             return;
         }
         onlineUserManager.offline(user.getUserId(), session);
+        // 此处其实引入功能的目的 大于 实际使用
+        throw new WebsocketException("[ WebSocketController] 连接异常！" + exception.toString());
     }
 
     @Override
