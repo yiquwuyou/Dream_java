@@ -1,5 +1,7 @@
 package com.example.demo.mapper;
 
+import com.example.demo.annotation.AutoFill;
+import com.example.demo.enums.OperationType;
 import com.example.demo.model.AddFriend;
 import com.example.demo.model.Friend;
 import org.apache.ibatis.annotations.*;
@@ -14,12 +16,16 @@ public interface FriendMapper {
     // 这样，MyBatis 就会使用 JDBC 的 getGeneratedKeys 方法来获取数据库生成的主键，并将其设置到 addFriend 对象的 id 属性中。
     // 友情提示，Options没真正在这里用到，想使用前先验证一下能否真正获取到
 //    @Options(useGeneratedKeys = true, keyProperty = "id")
-    @Insert("insert into add_friend(fromId,fromName, fromNickname, fromAvatar,toId,toName, toNickname, toAvatar, requestMessage, isAgree) " +
-            "values(#{fromId},#{fromName}, #{fromNickname}, #{fromAvatar},#{toId},#{toName}, #{toNickname}, #{toAvatar}, #{requestMessage}, #{isAgree})")
+    @Insert("insert into add_friend(fromId,fromName, fromNickname, fromAvatar,toId,toName, " +
+            "toNickname, toAvatar, requestMessage, isAgree, createTime, updateTime) " +
+            "values(#{fromId},#{fromName}, #{fromNickname}, #{fromAvatar},#{toId},#{toName}, " +
+            "#{toNickname}, #{toAvatar}, #{requestMessage}, #{isAgree}, #{createTime}, #{updateTime})")
+    @AutoFill(value = OperationType.INSERT)
     Integer addFriend(AddFriend addFriend);
 
-    @Update("update add_friend set isAgree = #{isAgree} where fromId = #{fromId} and toId = #{toId}")
-    Integer updateAgreeFriend(Integer isAgree, Integer fromId, Integer toId);
+    @Update("update add_friend set isAgree = #{isAgree} , updateTime = #{updateTime} where fromId = #{fromId} and toId = #{toId}")
+    @AutoFill(value = OperationType.UPDATE)
+    Integer updateAgreeFriend(AddFriend addFriend);
 
     @Insert("insert into friend(userId,friendId) values(#{userId},#{friendId}), (#{friendId},#{userId})")
     Integer insertfriend(int userId, int friendId);

@@ -120,8 +120,10 @@ CREATE TABLE add_friend
     requestMessage varchar(512),
     isAgree      INT DEFAULT 2,   -- 1 同意  0 拒绝  2 未同意
     isDeleted    INT  DEFAULT 1,   -- 1 删了  0 没删
-    createTime   DATETIME DEFAULT now(),
-    updateTime   DATETIME DEFAULT now() ON UPDATE now()
+--     createTime   DATETIME DEFAULT now(),
+--     updateTime   DATETIME DEFAULT now() ON UPDATE now()
+    createTime   DATETIME DEFAULT NULL,
+    updateTime   DATETIME DEFAULT NULL
 );
 
 insert into add_friend values(null, 1, 'zhangsan', '点击头像修改昵称哦~', 'https://th.bing.com/th/id/OIP.4or4IzOy3o9ZM2QaX7huXQAAAA?w=211&h=211&c=7&r=0&o=5&pid=1.7',

@@ -125,17 +125,18 @@ public class WebSocketController extends TextWebSocketHandler {
         log.info("[transferMessage] responseJson:" + responseJson);
         // todo： 这段代码后续前后端验证正确后可将下面的删除
         // 修改add_friend中的数据
-//        AddFriend addFriend = new AddFriend();
-//        BeanUtils.copyProperties(response, addFriend);
-//        // 将二者的头像等往里装
-//        addFriend.setFromNickname(fromUser.getNickname());
-//        addFriend.setFromAvatar(fromUser.getAvatarPath());
-//        addFriend.setToNickname(toUser.getNickname());
-//        addFriend.setToAvatar(toUser.getAvatarPath());
-//        addFriend.setRequestMessage(request.getContent());
+        AddFriend addFriend = new AddFriend();
+        BeanUtils.copyProperties(response, addFriend);
+        // 将二者的头像等往里装
+        addFriend.setFromNickname(fromUser.getNickname());
+        addFriend.setFromAvatar(fromUser.getAvatarPath());
+        addFriend.setToNickname(toUser.getNickname());
+        addFriend.setToAvatar(toUser.getAvatarPath());
+        addFriend.setRequestMessage(request.getContent());
 
         // 修改 add_friend 表中的数据  isAgree = 1
-        friendService.updateAgreeFriend(response.getIsAgree(), response.getFromId(), response.getToId());
+//        friendService.updateAgreeFriend(response.getIsAgree(), response.getFromId(), response.getToId());
+        friendService.updateAgreeFriend(addFriend);
         // 添加friend表中的数据
         friendService.insertfriend(response.getFromId(), response.getToId());
         // 转发
@@ -172,8 +173,18 @@ public class WebSocketController extends TextWebSocketHandler {
         // 把这个 java 对象转成 json 格式字符串
         String responseJson = objectMapper.writeValueAsString(response);
         log.info("[transferMessage] responseJson:" + responseJson);
+        // 修改add_friend中的数据
+        AddFriend addFriend = new AddFriend();
+        BeanUtils.copyProperties(response, addFriend);
+        // 将二者的头像等往里装
+        addFriend.setFromNickname(fromUser.getNickname());
+        addFriend.setFromAvatar(fromUser.getAvatarPath());
+        addFriend.setToNickname(toUser.getNickname());
+        addFriend.setToAvatar(toUser.getAvatarPath());
+        addFriend.setRequestMessage(request.getContent());
         // 修改 add_friend 表中的数据 isAgree = 0
-        friendService.updateAgreeFriend(response.getIsAgree(), response.getFromId(), response.getToId());
+        friendService.updateAgreeFriend(addFriend);
+
         // 转发
         WebSocketSession webSocketSession1 = onlineUserManager.getSession(response.getFromId());
         WebSocketSession webSocketSession2 = onlineUserManager.getSession(response.getToId());

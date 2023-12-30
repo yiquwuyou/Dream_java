@@ -5,6 +5,10 @@ spring:
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
+  redis:
+    host: 127.0.0.1
+    port: 6379
+    password:
 # 设置 Mybatis 的 xml 保存路径
 mybatis:
 #  下面这一行表示绑定 mapper 路径下的所有带 Mapper.xml 后缀的文件
