@@ -1,7 +1,11 @@
+# 配置 ip、端口号
+server:
+  port: 8080
+ip: localhost
 # 配置数据库的连接字符串
 spring:
   datasource:
-    url: jdbc:mysql://127.0.0.1:3306/java_chatroom?characterEncoding=utf8
+    url: jdbc:mysql://${ip}:3306/java_chatroom?characterEncoding=utf8
     username: root
     password: 123456
     driver-class-name: com.mysql.cj.jdbc.Driver
@@ -9,6 +13,11 @@ spring:
     host: 127.0.0.1
     port: 6379
     password:
+  # 设置上传文件的限制大小
+  servlet:
+    multipart:
+      max-file-size: 30MB
+      max-request-size: 30MB
 # 设置 Mybatis 的 xml 保存路径
 mybatis:
 #  下面这一行表示绑定 mapper 路径下的所有带 Mapper.xml 后缀的文件
@@ -27,3 +36,5 @@ alioss:
   access-key-id: LTAI5tRrowseRixd7JX8phzU
   access-key-secret: rD1H9iGoGXZIm65w9YDRbcl9Bqoeci
   bucket-name: quwuyou-1
+
+

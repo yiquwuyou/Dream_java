@@ -55,15 +55,19 @@ public class JwtInterceptor implements HandlerInterceptor {
             return true;
             // 根据不同的异常，设置不同的错误消息到“map”中，并将“state”设为“false”表示验证失败
         }catch (SignatureVerificationException e){  // 无效签名异常
+            map.put("code", "UNLOGIN");
             e.printStackTrace();
             map.put("msg", "无效签名！");
         }catch (TokenExpiredException e){           // 令牌过期异常
+            map.put("code", "UNLOGIN");
             e.printStackTrace();
             map.put("msg", "token过期！");
         }catch (AlgorithmMismatchException e){      // 令牌算法不一致异常
+            map.put("code", "UNLOGIN");
             e.printStackTrace();
             map.put("msg", "token算法不一致！");
         }catch (Exception e){                       // 其他异常
+            map.put("code", "UNLOGIN");
             e.printStackTrace();
             map.put("msg", "token无效！");
         }

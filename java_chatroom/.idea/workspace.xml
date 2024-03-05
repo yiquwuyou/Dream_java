@@ -4,7 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f61434b4-8e40-459e-9c29-59fcba96f335" name="Changes" comment="自定义注解为字段赋值 updateTime等">
+    <list default="true" id="f61434b4-8e40-459e-9c29-59fcba96f335" name="Changes" comment="将UserInfo信息存储到redis中，提高数据取用性能">
       <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/config/WebConfig.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/constant/Constants.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Book/src/main/java/com/example/book/enums/ResultCode.java" afterDir="false" />
@@ -18,10 +18,9 @@
       <change afterPath="$PROJECT_DIR$/../Suanfa/JianZhiOffer/JianZhiOffer/JZ24.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Suanfa/JianZhiOffer/JianZhiOffer/JZ6.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../Suanfa/JianZhiOffer/JianZhiOffer/JianZhiOffer.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/RedisConfiguration.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/com/example/demo/RedisTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/RedisConfiguration.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/test-classes/com/example/demo/RedisTest.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/editstarters/initializr-cache.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FileCeshiController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/FileController.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mq/src/main/java/com/example/mq/common/BasicAckArguments.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mq/src/main/java/com/example/mq/common/BasicArguments.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mq/src/main/java/com/example/mq/common/BasicConsumeArguments.java" afterDir="false" />
@@ -66,6 +65,7 @@
       <change afterPath="$PROJECT_DIR$/../mq/src/test/java/com/example/mq/MqClientTests.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mq/src/test/java/com/example/mq/RouterTests.java" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../mq/src/test/java/com/example/mq/VirtualHostTests.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../python_code/.idea/python_code.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../python_code/main.py" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../untitled/out/production/untitled/untitled.iml" afterDir="false" />
       <change afterPath="$PROJECT_DIR$/../untitled/out/production/实验作业/实验作业.iml" afterDir="false" />
@@ -93,6 +93,7 @@
       <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Mybatis/src/main/java/com/example/mybatis/mapper/UserInfo2Mapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Mybatis/src/main/java/com/example/mybatis/mapper/UserInfo2Mapper.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Mybatis/src/main/resources/mapper/userInfo2XMLMapper.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Mybatis/src/main/resources/mapper/userInfo2XMLMapper.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/Mybatis/src/test/java/com/example/mybatis/mapper/UserInfo2MapperTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/Mybatis/src/test/java/com/example/mybatis/mapper/UserInfo2MapperTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/controller/ParamController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo1/src/main/java/com/yiquwuyou/springbootdemo1/controller/ParamController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo3/src/main/java/com/example/springbootdemo3/CaptchaController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo3/src/main/java/com/example/springbootdemo3/CaptchaController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo3/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/SpringBootDemo3/src/main/resources/application.yml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../BiTeSpringBootDemo/spring-book/logger/spring-book.log" beforeDir="false" afterPath="$PROJECT_DIR$/../BiTeSpringBootDemo/spring-book/logger/spring-book.log" afterDir="false" />
@@ -120,12 +121,34 @@
       <change beforePath="$PROJECT_DIR$/../MessageWall/MessageWall" beforeDir="false" afterPath="$PROJECT_DIR$/../MessageWall/MessageWall" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Spring_Jedis/src/main/java/com/example/spring_jedis/MyController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Spring_Jedis/src/main/java/com/example/spring_jedis/MyController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Spring_Jedis/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/../Spring_Jedis/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/InterceptorConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/InterceptorConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/JwtInterceptor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/JwtInterceptor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/config/ResponseAdvice.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/config/ResponseAdvice.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CommonController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/CommonController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/controller/UserController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/User.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/UserController.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/UserController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/model/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/model/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Result.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/example/demo/model/Result.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/application.yml" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.yml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/CommonController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/FriendController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/MessageController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/MessageSessionController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/TestWebSocketController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/UserController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/Controller/WebSocketController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/InterceptorConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/InterceptorConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/JwtInterceptor.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/JwtInterceptor.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/classes/com/example/demo/config/ResponseAdvice.class" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/com/example/demo/config/ResponseAdvice.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/demo/DemoApplicationTests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/target/test-classes/com/example/demo/RedisTest.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../java_everything/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../java_everything/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java_everything/src/main/java/dao/DButil.java" beforeDir="false" afterPath="$PROJECT_DIR$/../java_everything/src/main/java/dao/DButil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../java_everything/target/classes/dao/DButil.class" beforeDir="false" afterPath="$PROJECT_DIR$/../java_everything/target/classes/dao/DButil.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../sky-take-out/sky-server/src/main/java/com/sky/controller/user/DishController.java" beforeDir="false" afterPath="$PROJECT_DIR$/../sky-take-out/sky-server/src/main/java/com/sky/controller/user/DishController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../长工大作业/大二上/Java4/src/main/java/org/example/Controller/CalculatorApp.java" beforeDir="false" afterPath="$PROJECT_DIR$/../长工大作业/大二上/Java4/src/main/java/org/example/Controller/CalculatorApp.java" afterDir="false" />
     </list>
@@ -178,34 +201,37 @@
   <component name="ProjectViewState">
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;D:/code_github/Dream_java/java_chatroom&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;SDKs&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
-    &quot;spring.configuration.checksum&quot;: &quot;1b1545388864b89f22e1d447eb70778c&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "last_opened_file_path": "D:/code_github/Dream_java/BiTeSpringBootDemo/Book",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "project.structure.last.edited": "SDKs",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "File.Encoding",
+    "spring.configuration.checksum": "1b1545388864b89f22e1d447eb70778c",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;DatabaseDriversLRU&quot;: [
-      &quot;mysql&quot;
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
     ]
   }
-}</component>
+}]]></component>
+  <component name="ReactorSettings">
+    <option name="notificationShown" value="true" />
+  </component>
   <component name="RecentsManager">
     <key name="CopyClassDialog.RECENTS_KEY">
       <recent name="com.example.demo.config" />
@@ -225,12 +251,12 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Test" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="com.example.demo.config.Test" />
+    <configuration name="FileCeshiController" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.example.demo.controller.FileCeshiController" />
       <module name="java_chatroom" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="com.example.demo.config.*" />
+          <option name="PATTERN" value="com.example.demo.controller.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -312,11 +338,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.FileCeshiController" />
         <item itemvalue="JUnit.RedisTest.testString" />
         <item itemvalue="JUnit.RedisTest.testRedis" />
         <item itemvalue="Application.Transformation" />
         <item itemvalue="Application.Equals" />
-        <item itemvalue="Application.Test" />
       </list>
     </recent_temporary>
   </component>
@@ -394,7 +420,15 @@
       <workItem from="1703477834355" duration="21000" />
       <workItem from="1703482052974" duration="2403000" />
       <workItem from="1703847290098" duration="3258000" />
-      <workItem from="1703916166206" duration="18163000" />
+      <workItem from="1703916166206" duration="18265000" />
+      <workItem from="1704202150997" duration="8382000" />
+      <workItem from="1704626425450" duration="581000" />
+      <workItem from="1704949643066" duration="1292000" />
+      <workItem from="1708058216378" duration="48000" />
+      <workItem from="1709270551724" duration="1097000" />
+      <workItem from="1709438102738" duration="10240000" />
+      <workItem from="1709527342074" duration="17575000" />
+      <workItem from="1709614352661" duration="18052000" />
     </task>
     <task id="LOCAL-00001" summary="网页聊天室">
       <option name="closed" value="true" />
@@ -460,7 +494,15 @@
       <option name="project" value="LOCAL" />
       <updated>1703934327448</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="将UserInfo信息存储到redis中，提高数据取用性能">
+      <option name="closed" value="true" />
+      <created>1704091497548</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1704091497548</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -484,7 +526,8 @@
     <MESSAGE value="大更新，版本2，新增个人信息，完善加好友操作" />
     <MESSAGE value="自定义异常类加Result统一封装返回结果" />
     <MESSAGE value="自定义注解为字段赋值 updateTime等" />
-    <option name="LAST_COMMIT_MESSAGE" value="自定义注解为字段赋值 updateTime等" />
+    <MESSAGE value="将UserInfo信息存储到redis中，提高数据取用性能" />
+    <option name="LAST_COMMIT_MESSAGE" value="将UserInfo信息存储到redis中，提高数据取用性能" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>

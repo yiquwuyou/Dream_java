@@ -3,6 +3,7 @@ package com.example.demo.controller;
 import com.auth0.jwt.interfaces.Claim;
 import com.auth0.jwt.interfaces.DecodedJWT;
 import com.example.demo.mapper.UserMapper;
+import com.example.demo.model.Result;
 import com.example.demo.model.User;
 import com.example.demo.model.UserJwt;
 import com.example.demo.utils.JwtUtil;
@@ -17,6 +18,7 @@ import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.HashMap;
 import java.util.List;
@@ -76,6 +78,7 @@ public class UserController {
 
             // 再插入 redis
             HashOperations hashOperations = redisTemplate.opsForHash();
+            log.info("----------------------------------------------------------");
             String key = "UserId" + user.getUserId();
             hashOperations.put(key, "username", user.getUsername());
             hashOperations.put(key, "nickname", user.getNickname());
@@ -89,6 +92,7 @@ public class UserController {
             // 如果 insert 方法抛出上述异常，说明名字重复了，注册失败
             user = new User();
             log.info("注册失败! username = " + username);
+            return Result.fail("注册失败，该用户已经存在！");
         }
         return user;
     }
@@ -125,7 +129,8 @@ public class UserController {
     // 修改/更新用户信息
     @RequestMapping("/updateUser")
     @ResponseBody
-    public Object updateUser(User user) {
+    public Object updateUser(@RequestBody User user) {
+        log.info("更新用户信息：" + user);
         if (UserJwt.getUserId() != user.getUserId()) {
             log.info("用户id不匹配，无法更新用户信息");
             return null;
@@ -134,7 +139,7 @@ public class UserController {
         // 先更新 redis
         HashOperations hashOperations = redisTemplate.opsForHash();
         String key = "UserId" + user.getUserId();
-        hashOperations.put(key, "username", user.getUsername());
+//        hashOperations.put(key, "username", user.getUsername());
         hashOperations.put(key, "nickname", user.getNickname());
         hashOperations.put(key, "avatarPath", user.getAvatarPath());
         hashOperations.put(key, "signature", user.getSignature());
@@ -146,4 +151,22 @@ public class UserController {
         return ret;
     }
 
+
+//    // 下面两个是测试接口,后续删除
+//    @ResponseBody
+////    @GetMapping(value = "/ceshi",produces="text/plain;charset=UTF-8")
+//    @GetMapping(value = "/ceshi")
+//    public String ceshi(){
+//        String x = "测试通过";
+//        log.info(x);
+//        return x;
+//    }
+//
+//    @ResponseBody
+//    @GetMapping("/测试")
+//    public String ceshi2(){
+//        String x = "----cssac";
+//        log.info(x);
+//        return x;
+//    }
 }

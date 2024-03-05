@@ -11,7 +11,7 @@ import lombok.Data;
 @Data
 public class Result<T> {
     // 业务状态码
-    private ResultCode code;  // 0 成功  -1 失败   -2 登录 (会自动转化为枚举常量)
+    private ResultCode code;  // 0 成功  -1 失败   -2 未登录 (会自动转化为枚举常量)
 
     // 错误信息
     private String errMsg;

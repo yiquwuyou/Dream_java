@@ -27,7 +27,8 @@ public class CommonController {
     /**
      * 文件上传
      * @param file
-     * @return
+     * @return.
+     *
      */
     @PostMapping("/upload")
     @ApiOperation("文件上传")
