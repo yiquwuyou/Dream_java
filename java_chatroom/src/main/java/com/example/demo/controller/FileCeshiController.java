@@ -7,11 +7,9 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import javax.servlet.ServletOutputStream;
-import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.File;
 import java.io.IOException;
-import java.net.URLEncoder;
 
 @RestController
 @Slf4j
@@ -38,6 +36,7 @@ public class FileCeshiController {
         log.info("文件的原始主名称：{}", mainName);
         String extName = FileUtil.extName(originalFilename);  // 文件的扩展名(后缀)    .png
         log.info("文件的原始后缀：{}", extName);
+        System.out.println();
 
         // 如果当前文件的父级目录不存在，就创建
         if(!FileUtil.exist(ROOT_PATH)){
@@ -90,3 +89,4 @@ public class FileCeshiController {
 
 
 }
+
