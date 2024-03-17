@@ -19,6 +19,7 @@ public class User {
     private String signature = "这个人很懒，什么都没有留下";
     //性别
     private String sex = "草履虫";
+    private Integer role = 1;
     // 数据是否有效    1 有效  0 无效
     private Integer deleteFlag;
     private LocalDateTime createTime;

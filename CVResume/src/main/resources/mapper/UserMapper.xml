@@ -18,7 +18,7 @@
             <if test="avatarPath != null">avatarPath = #{avatarPath},</if>
             <if test="signature != null">signature = #{signature},</if>
             <if test="sex != null">sex = #{sex},</if>
-            <if test="delete_flag != null">delete_flag = #{delete_flag}</if>
+            <if test="deleteFlag != null">delete_flag = #{deleteFlag}</if>
             where username = #{username}
         </set>
     </update>

@@ -6,6 +6,7 @@ import com.example.cvresume.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -46,5 +47,56 @@ public class UserController {
 
     }
     // 注册
+    @RequestMapping("/register")
+    public Result register(String username, String password){
+        //校验参数
+        if (!StringUtils.hasLength(username) || !StringUtils.hasLength(password)){
+            return Result.fail("用户名或密码不能为空");
+        }
+        //校验用户名是否存在
+        User user = userService.selectByName(username);
+        if (user != null && user.getUserId() > 0){
+            return Result.fail("用户名已存在");
+        }
+        //注册
+        user = new User();
+        user.setUsername(username);
+        user.setPassword(password);
+        int ret = userService.insertUser(user);
+        if (ret > 0){
+            User user1 = userService.selectByName(username);
+            return Result.success(user1);
+        }
+        return Result.fail("注册失败");
+    }
 
+    // 修改用户信息
+    @RequestMapping("/update")
+    public Result update(@RequestBody User user){
+        // 参数校验
+        if(user.getUsername() == null){
+            return Result.fail("用户账号不能为空");
+        }
+        //修改
+        int ret = userService.updateUser(user);
+        if (ret > 0){
+            return Result.success(userService.selectByName(user.getUsername()));
+        }
+        return Result.fail("修改失败");
+    }
+
+    // 根据用户名查询用户所有信息
+    @RequestMapping("/selectByName")
+    public Result selectByName(String username){
+        // 参数校验
+        if (!StringUtils.hasLength(username)){
+            return Result.fail("用户名不能为空");
+        }
+        //查询
+        User user = userService.selectByName(username);
+        if (user != null && user.getUserId() > 0){
+            return Result.success(user);
+        }
+        return Result.fail("查询失败");
+    }
 }
