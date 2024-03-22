@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.questionnaire.mapper.UserMapper">
+
+    <!--    useGeneratedKeys="true" 意思是插入的同时要获取插入结果的自增主键-->
+    <!--    keyProperty="userId" 表示获取到自增主键后，将其赋值为 userId 这个属性-->
+    <insert id="insertuser" useGeneratedKeys="true" keyProperty="userId">
+        INSERT INTO `user` (username, password, nickname, avatarPath, signature, sex)
+        VALUES (#{username}, #{password}, #{nickname}, #{avatarPath}, #{signature}, #{sex})
+    </insert>
+
+
+
+    <update id="updateUser">
+        update user
+        <set>
+            <if test="nickname != null">nickname = #{nickname},</if>
+            <if test="avatarPath != null">avatarPath = #{avatarPath},</if>
+            <if test="signature != null">signature = #{signature},</if>
+            <if test="sex != null">sex = #{sex}</if>
+            where username = #{username}
+        </set>
+    </update>
+</mapper>
