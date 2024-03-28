@@ -4,13 +4,12 @@ import lombok.Data;
 
 import java.time.LocalDateTime;
 
-// 下面都是些默认的值
 @Data
-public class User {
-    private Integer userId;
+public class UserLog {
+    private int id;
     private String username;
-    private String password;
-    private String phone;
+    private int role;                // 1-添加 2-修改 3-删除
+    private String content;
     private LocalDateTime createTime;
     private LocalDateTime updateTime;
 }

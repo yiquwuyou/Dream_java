@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.questionnaire.mapper.WriteQuestionMapper">
+
+    <update id="updateQuestion" parameterType="com.example.questionnaire.model.WriteQuestion">
+        UPDATE question
+        <set>
+            <trim suffixOverrides=",">
+                <if test="userquestionid != null">userquestionid = #{userquestionid},</if>
+                <if test="username != null">username = #{username},</if>
+                <if test="title != null">title = #{title},</if>
+                <if test="type != null">type = #{type},</if>
+                <if test="sort != null">sort = #{sort},</if>
+                <if test="isRequired != null">isRequired = #{isRequired},</if>
+                <if test="content != null">content = #{content},</if>
+                <if test="placeholder != null">placeholder = #{placeholder},</if>
+                <if test="radio != null">radio = #{radio},</if>
+                <if test="radioOptions != null">radioOptions = #{radioOptions},</if>
+                <if test="checkList != null">checkList = #{checkList},</if>
+                <if test="checkboxOptions != null">checkboxOptions = #{checkboxOptions},</if>
+            </trim>
+        </set>
+        WHERE writeusername = #{writeusername} and userquestionid = #{userquestionid}
+    </update>
+
+    <insert id="addQuestion" parameterType="com.example.questionnaire.model.WriteQuestion">
+        INSERT INTO writequestion (uuid, userquestionid, originusername, writeusername, isPublish,
+                              title, type, sort, isRequired, content, placeholder, radio, radioOptions, checkList, checkboxOptions)
+        VALUES (
+        <trim suffixOverrides=",">
+            <if test="uuid != null">#{uuid},</if>
+            <if test="userquestionid != null">#{userquestionid},</if>
+            <if test="originusername != null">#{originusername},</if>
+            <if test="writeusername != null">#{writeusername},</if>
+            <if test="isPublish != null">#{isPublish},</if>
+            <if test="title != null">#{title},</if>
+            <if test="type != null">#{type},</if>
+            <if test="sort != null">#{sort},</if>
+            <if test="isRequired != null">#{isRequired},</if>
+            <if test="content != null">#{content},</if>
+            <if test="placeholder != null">#{placeholder},</if>
+            <if test="radio != null">#{radio},</if>
+            <if test="radioOptions != null">#{radioOptions},</if>
+            <if test="checkList != null">#{checkList},</if>
+            <if test="checkboxOptions != null">#{checkboxOptions},</if>
+        </trim>
+        )
+    </insert>
+
+
+</mapper>

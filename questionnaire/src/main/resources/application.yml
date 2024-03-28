@@ -1,6 +1,6 @@
 # 配置 ip、端口号
 server:
-  port: 8080
+  port: 8081
 ip: localhost
 # 配置数据库的连接字符串
 spring:
@@ -28,8 +28,3 @@ logging:
       example:
         demo: debug
 
-alioss:
-  endpoint: oss-cn-beijing.aliyuncs.com
-  access-key-id: LTAI5tRrowseRixd7JX8phzU
-  access-key-secret: rD1H9iGoGXZIm65w9YDRbcl9Bqoeci
-  bucket-name: quwuyou-1

@@ -2,8 +2,10 @@ package com.example.questionnaire.controller;
 
 import com.example.questionnaire.model.Result;
 import com.example.questionnaire.model.User;
+import com.example.questionnaire.model.UserJwt;
 import com.example.questionnaire.service.UserService;
 import com.example.questionnaire.utils.JwtUtil;
+import com.fasterxml.jackson.annotation.JsonRootName;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
@@ -21,10 +23,14 @@ public class UserController {
     @Autowired
     private UserService userService;
 
+
     // 登录
     @RequestMapping("/login")
     @ResponseBody
-    public Result login(String username, String password){
+    public Result login(@RequestBody Map<String, String> mapParams){
+        String username = mapParams.get("username");
+        String password = mapParams.get("password");
+
         //校验参数
         if (!StringUtils.hasLength(username) || !StringUtils.hasLength(password)){
             return Result.fail("用户名或密码不能为空");
@@ -50,10 +56,6 @@ public class UserController {
         map.put("username", user.getUsername());
         Map<String, String> mapJWT = new HashMap<>(map);
         String token = JwtUtil.getToken(mapJWT);
-        map.put("nickname", user.getNickname());
-        map.put("avatarPath", user.getAvatarPath());
-        map.put("signature", user.getSignature());
-        map.put("sex", user.getSex());
         map.put("token", token);
         log.info("用户已登录：" + map);
         return Result.success(map);
@@ -61,7 +63,9 @@ public class UserController {
     }
     // 注册
     @RequestMapping("/register")
-    public Result register(String username, String password){
+    public Result register(@RequestBody Map<String, String> mapParams){
+        String username = mapParams.get("username");
+        String password = mapParams.get("password");
 //        校验参数
         if (!StringUtils.hasLength(username) || !StringUtils.hasLength(password)){
             return Result.fail("用户名或密码不能为空");
@@ -86,21 +90,20 @@ public class UserController {
     // 修改用户信息
     @RequestMapping("/update")
     public Result update(@RequestBody User user){
-        // 参数校验
-        if(user.getUsername() == null){
-            return Result.fail("用户账号不能为空");
-        }
+        String username = UserJwt.getUsername();
+        user.setUsername(username);
         //修改
         int ret = userService.updateUser(user);
         if (ret > 0){
-            return Result.success(userService.selectByName(user.getUsername()));
+            return Result.success(userService.selectByName(username));
         }
         return Result.fail("修改失败");
     }
 
-    // 根据用户名查询用户所有信息
+    // 查询用户信息
     @RequestMapping("/selectByName")
-    public Result selectByName(String username){
+    public Result selectByName(){
+        String username = UserJwt.getUsername();
         // 参数校验
         if (!StringUtils.hasLength(username)){
             return Result.fail("用户名不能为空");
@@ -116,7 +119,9 @@ public class UserController {
 
     // 查询原密码
     @RequestMapping("/selectPassword")
-    public Result selectPassword(String username){
+    public Result selectPassword(){
+        String username = UserJwt.getUsername();
+        log.info("username: " + username);
         // 参数校验
         if (!StringUtils.hasLength(username)){
             return Result.fail("用户名不能为空");
@@ -131,7 +136,11 @@ public class UserController {
 
     // 修改密码
     @RequestMapping("/updatePassword")
-    public Result updatePassword(String username, String originalPassword, String newPassword){
+    public Result updatePassword(@RequestBody Map<String, String> mapParams){
+        String username = UserJwt.getUsername();
+        String originalPassword = mapParams.get("originalPassword");
+        String newPassword = mapParams.get("newPassword");
+
         // 参数校验
         if (!StringUtils.hasLength(username) || !StringUtils.hasLength(originalPassword) || !StringUtils.hasLength(newPassword)){
             return Result.fail("用户名或密码不能为空");

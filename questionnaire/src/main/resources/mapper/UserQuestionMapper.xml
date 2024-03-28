@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.questionnaire.mapper.UserQuestionMapper">
+
+    <update id="updateUserQuestion">
+        update userquestion
+        <set>
+            <trim suffixOverrides=",">
+                <if test="title != null">title = #{title},</if>
+                <if test="content != null">content = #{content},</if>
+                <if test="isPublish != null">is_publish = #{isPublish},</if>
+                <if test="answerNumber != null">answer_number = #{answerNumber},</if>
+            </trim>
+        </set>
+        where uuid = #{uuid}
+    </update>
+
+</mapper>
